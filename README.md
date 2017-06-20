@@ -95,6 +95,6 @@ the main additions to webissues are the use of webservices to run security test 
 
 - view detected bug with the HMI of webissues: 
 
-![ScreenShot](https://raw.githubusercontent.com/forgesecurity/security-bugtracker/master/documentation/bugs.png)
+![ScreenShot](https://raw.githubusercontent.com/designsecurity/security-bugtracker/master/documentation/bugs.png)
 
 
