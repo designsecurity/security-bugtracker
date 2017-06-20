@@ -1,0 +1,393 @@
+\documentclass[a4paper]{report}
+
+\usepackage[latin1]{inputenc} % accents
+\usepackage[T1]{fontenc}      % caractères français
+\usepackage[frenchb, english]{babel}  % langue
+\usepackage{graphicx}         % images
+\usepackage{verbatim}         % texte préformaté
+\usepackage{listings}
+\usepackage[]{algorithm2e}
+\usepackage[margin=0.8in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{white},       % keyword style
+  language=Octave,                 % the language of the code
+  otherkeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\lstset{escapechar=@,style=customc}
+
+\lstdefinestyle{DOS}
+{
+    backgroundcolor=\color{black},
+    identifierstyle=\color{white},
+    basicstyle=\scriptsize\color{white}\ttfamily
+}
+
+\addto\captionsfrancais{% Replace "english" with the language you use
+  \renewcommand{\contentsname}%
+    {Sommaire}%
+}
+
+\begin{document}
+
+\begin{titlepage}
+\fontfamily{phv}\selectfont
+\vspace*{\stretch{1}}
+\begin{flushright}\LARGE
+Security bugtracker
+\end{flushright}
+\hrule
+\begin{flushleft}\huge\bfseries
+User Manual
+\end
+{flushleft}
+\vspace*{\stretch{2}}
+\begin{center}
+Eric Therond
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+
+\chapter{Installation}
+
+  \section{Overview}
+
+\textit{Security-bugtracker} is currently a tool based on three dependencies :
+\begin{itemize}
+\item webissues bug tracker : http://webissues.mimec.org/
+\item openvas  : http://www.openvas.org/
+\item dirb : http://dirb.sourceforge.net/
+\item nmap : https://nmap.org/
+\item arachni : www.arachni-scanner.com
+\item sslscan : https://github.com/ssllabs/ssllabs-scan
+\item node security platform : https://nodesecurity.io/ 
+\item sensiolabs security checker : https://security.sensiolabs.org/
+\item dependency check : https://github.com/jeremylong/DependencyCheck
+
+\end{itemize}
+\vspace{5mm}
+Each of this tool can be installed on different or same server.\\
+The aim of this project is to produce automated security tests and track detected default in a bugtracker.
+\vspace{5mm}
+\begin{center}
+\includegraphics[scale=0.60]{sec1.png}
+\vspace{5mm}
+\end{center}
+  \newpage
+  
+  \section{Openvas}
+See the documentation on the official web site : http://www.openvas.org/install-source.html\\
+On the same server install a web server and php, then copy the following module of this project to the directory of your web server :/security-bugtracker/security\_tools/openvas\\
+Then edit /security-bugracker/security\_tools/openvas/openvas.conf.php :\\
+\begin{lstlisting}[style=customc]
+<?php
+
+$CONF_WS_OPENVAS_LOGIN = "test";
+$CONF_WS_OPENVAS_PASSWORD = "test";
+$CONF_WEBISSUES_OPENVAS_LOGIN = "openvas";
+$CONF_WEBISSUES_OPENVAS_PASSWORD = "openvas";
+$CONF_WEBISSUES_WS_ENDPOINT = "http://localhost:8080/webissues-server-1.1.4/client/webservices.php";
+$CONF_OPENVAS_ALERT_URL = "http://localhost:8080/webissues-server-1.1.4/client/security_tools/openvas/openvas.php";
+$CONF_OPENVAS_ADMIN_LOGIN = "admin";
+$CONF_OPENVAS_ADMIN_PASSWORD = "0825839c-0d3f-4417-a118-954a78e2553c";
+$CONF_OPENVAS_CONFIG_ID = "a0e8fed8-45c1-4890-bd08-671257f63308";
+$CONF_OPENVAS_PATH_OMP = "/usr/local/bin/omp";
+$CONF_OPENVAS_PORT_OMP = "9393";
+
+?>
+\end{lstlisting}\
+\begin{itemize}
+\item \scriptsize{CONF\_WS\_OPENVAS\_LOGIN}
+\item \scriptsize{CONF\_WS\_OPENVAS\_PASSWORD}
+\end{itemize}
+are the credentials for the web services of this module.
+\begin{itemize}
+\item \scriptsize{CONF\_WEBISSUES\_OPENVAS\_LOGIN}
+\item \scriptsize{CONF\_WEBISSUES\_OPENVAS\_PASSWORD}
+\item \scriptsize{CONF\_WEBISSUES\_WS\_ENDPOINT}
+\end{itemize}
+ will be completed later.
+\begin{itemize}
+\item \scriptsize{CONF\_OPENVAS\_ALERT\_URL}
+\end{itemize}
+ is the address of this module on this web server.
+\begin{itemize}
+\item \scriptsize{CONF\_OPENVAS\_ADMIN\_LOGIN}
+\item \scriptsize{CONF\_OPENVAS\_ADMIN\_PASSWORD}
+\end{itemize}
+ are the openvas admin credentials.
+\begin{itemize}
+\item \scriptsize{CONF\_OPENVAS\_CONFIG\_ID}
+\end{itemize}
+is the default config id for run a scan with openvas, check your config with this openvas command
+\begin{lstlisting}[style=DOS]
+linux-3ig5:/home/eric/security-bugracker/documentation # omp -u admin -w 0825839c-0d3f-4417-a118-954a78e2553c -p 9393 --get-configs
+8715c877-47a0-438d-98a3-27c7a6ab2196  Discovery
+085569ce-73ed-11df-83c3-002264764cea  empty
+daba56c8-73ec-11df-a475-002264764cea  Full and fast
+698f691e-7489-11df-9d8c-002264764cea  Full and fast ultimate
+708f25c4-7489-11df-8094-002264764cea  Full and very deep
+a0e8fed8-45c1-4890-bd08-671257f63308  Full and very deep Clone 1
+74db13d6-7489-11df-91b9-002264764cea  Full and very deep ultimate
+2d3f051c-55ba-11e3-bf43-406186ea4fc5  Host Discovery
+bbca7412-a950-11e3-9109-406186ea4fc5  System Discovery
+\end{lstlisting}
+\begin{itemize}
+\item \scriptsize{CONF\_OPENVAS\_PATH\_OMP}
+\end{itemize}
+is the path of your omp binary on this server.
+\begin{itemize}
+\item \scriptsize{CONF\_OPENVAS\_PORT\_OMP}
+\end{itemize}
+is the tcp port which on openvas / omp is running
+  \newpage
+
+  \section{Dependency-check}
+See the documentation on the official web site : https://github.com/jeremylong/DependencyCheck
+  
+  \section{Webissues}
+See the documentation on the official web site : http://wiki.mimec.org/wiki/WebIssues/Installation. Once the bugtracker is installed, copy the following module of this project to your webissues root directory :\\
+/security-bugracker/webissues-server-1.1.4\\\\
+Next go at this address (replace the name, port, path with rights informations) :\\
+http://localhost:8080/webissues-server-1.1.4/client/securityplugin.php
+\newline
+\includegraphics[scale=0.50]{sec2.png}
+\vspace{5mm}
+\newline
+Select \textit{install plugin} and enter choosen values when the openvas module was installed above :\\
+\begin{itemize}
+\item \scriptsize{CONF\_WS\_OPENVAS\_LOGIN}
+\item \scriptsize{CONF\_WS\_OPENVAS\_PASSWORD}
+\item \scriptsize{CONF\_OPENVAS\_ALERT\_URL}
+\end{itemize}
+For finish create \textit{openvas} and \textit{Dependency-check} users in webissues.\\
+Modify wsdl endpoints (openvas.wsdl and webservices.wsdl) to specify the correct address
+\chapter{Use}
+Don't forget to use \textit{basic authentification} with a login which have the good rights on webissues when using the webservices.
+  \section{add a project}
+Add a project with the following web service method or via the traditional him of web issues :
+\begin{lstlisting}[style=customc]
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://securitybugtracker/V1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:addproject>
+         <name>TEST</name>
+         <description>TEST</description>
+      </v1:addproject>
+   </soapenv:Body>
+</soapenv:Envelope>
+\end{lstlisting}
+Remember the ids returned with the response :
+\begin{lstlisting}[style=customc]
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://securitybugtracker/V1">
+   <SOAP-ENV:Body>
+      <ns1:addproject_Response>
+         <id_details>
+            <id_project>29</id_project>
+            <id_folder_bugs>81</id_folder_bugs>
+            <id_folder_servers>82</id_folder_servers>
+            <id_folder_codes>83</id_folder_codes>
+            <id_folder_scans>84</id_folder_scans>
+         </id_details>
+      </ns1:addproject_Response>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+\end{lstlisting}
+\newpage
+  \section{add a member}
+  Add a \textit{robot} member for this project (the \textit{openvas} account created during the installation) :
+\begin{lstlisting}[style=customc]
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://securitybugtracker/V1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:addmember>
+         <id_user>4</id_user>
+         <id_project>29</id_project>
+         <access>admin</access>
+      </v1:addmember>
+   </soapenv:Body>
+</soapenv:Envelope>
+\end{lstlisting}
+\begin{lstlisting}[style=customc]
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://securitybugtracker/V1">
+   <SOAP-ENV:Body>
+      <ns1:addmember_Response>
+         <result_details>
+            <result>true</result>
+         </result_details>
+      </ns1:addmember_Response>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+\end{lstlisting}
+  
+  \section{add a server}
+  Add a target server for this project, you can add multiple ips separated by the , character and the values of \textit{use parameter} must be one of thoses :
+  
+\begin{itemize}
+\item Development : for a development environment server
+\item Test : for a test environment server
+\item Production : for a production environment server
+\end{itemize}
+\begin{lstlisting}[style=customc]
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://securitybugtracker/V1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:addserver>
+         <id_folder_servers>82</id_folder_servers>
+         <hostname>eric-pc</hostname>
+         <description>eric-pc</description>
+         <use>Production</use>
+         <ipsaddress>127.0.0.1</ipsaddress>
+      </v1:addserver>
+   </soapenv:Body>
+</soapenv:Envelope>
+\end{lstlisting}
+\begin{lstlisting}[style=customc]
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://securitybugtracker/V1">
+   <SOAP-ENV:Body>
+      <ns1:addserver_Response>
+         <result_addserver_details>
+            <id_server>1676</id_server>
+         </result_addserver_details>
+      </ns1:addserver_Response>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+\end{lstlisting}
+  
+  \section{add a code}
+  Add a target code path for this project, the \textit{code parameter} is the path of the directory which contain librairies to be scanned by the dependency-check security tool.
+\begin{lstlisting}[style=customc]
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://securitybugtracker/V1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:addcode>
+         <id_folder_codes>83</id_folder_codes>
+         <name>java test</name>
+         <description>java tes</description>
+         <code>/home/eric/test/libs-java</code>
+      </v1:addcode>
+   </soapenv:Body>
+</soapenv:Envelope>
+\end{lstlisting}
+\begin{lstlisting}[style=customc]
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://securitybugtracker/V1">
+   <SOAP-ENV:Body>
+      <ns1:addcode_Response>
+         <result_addcode_details>
+            <id_code>1680</id_code>
+         </result_addcode_details>
+      </ns1:addcode_Response>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+\end{lstlisting}
+
+  \section{scan the targets}
+  \subsection{Dynamic scan with openvas}
+Run a scan with openvas security tool, select openvas value for the \textit{tool parameter}, select a specific openvas config scan if you don't want to use the default config parametered during the installation and select a filter which can be :
+\begin{itemize}
+\item info : only add issues with a severity equal or upper to info
+\item minor : only add issues with a severity equal or upper to minor
+\item medium : only add issues with a severity equal or upper to medium
+\item high : only add issues with a severity equal to high
+\end{itemize}
+\begin{lstlisting}[style=customc]
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://securitybugtracker/V1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:addscan>
+         <id_folder_scans>88</id_folder_scans>
+         <name>test scan soap ui</name>
+         <description>test scan soap ui</description>
+         <tool>openvas</tool>
+         <filter>medium</filter>
+         <!--Optional:-->
+         <id_config_openvas>?</id_config_openvas>
+      </v1:addscan>
+   </soapenv:Body>
+</soapenv:Envelope>
+\end{lstlisting}
+\begin{lstlisting}[style=customc]
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://securitybugtracker/V1">
+   <SOAP-ENV:Body>
+      <ns1:addscan_Response>
+         <result_addscan_details>
+            <id_scan>2422</id_scan>
+         </result_addscan_details>
+      </ns1:addscan_Response>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+\end{lstlisting}
+
+  \subsection{Static scan with dependency-check}
+The static scan must me run localy, see jobs chapter.
+
+  \section{Results}
+You can view the results of your precedings actions with th him of webissues :
+\newline
+\includegraphics[scale=0.50]{sec4.png}
+\vspace{5mm}
+\newline
+\includegraphics[scale=0.50]{sec5.png}
+\vspace{5mm}
+\newline
+\includegraphics[scale=0.50]{sec6.png}
+\vspace{5mm}
+\newline
+\includegraphics[scale=0.50]{sec7.png}
+\vspace{5mm}
+\newline
+\chapter{Jobs}
+
+You can easily script a job which can interact with your configuration management tool for example for requesting automatically the web services and running security scans.\\You can see examples in the jobs directory :\\
+/security-bugracker/security\_tools/jobs/run\_dependencycheck.php\\
+/security-bugracker/security\_tools/jobs/run\_openvas.php\\
+% \listoffigures
+% \listoftables
+
+\end{document}

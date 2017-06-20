@@ -1,0 +1,16 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Installation}{2}{chapter.1}
+\contentsline {section}{\numberline {1.1}Overview}{2}{section.1.1}
+\contentsline {section}{\numberline {1.2}Openvas}{3}{section.1.2}
+\contentsline {section}{\numberline {1.3}Dependency-check}{4}{section.1.3}
+\contentsline {section}{\numberline {1.4}Webissues}{4}{section.1.4}
+\contentsline {chapter}{\numberline {2}Use}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}add a project}{5}{section.2.1}
+\contentsline {section}{\numberline {2.2}add a member}{6}{section.2.2}
+\contentsline {section}{\numberline {2.3}add a server}{6}{section.2.3}
+\contentsline {section}{\numberline {2.4}add a code}{7}{section.2.4}
+\contentsline {section}{\numberline {2.5}scan the targets}{7}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Dynamic scan with openvas}{7}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Static scan with dependency-check}{8}{subsection.2.5.2}
+\contentsline {section}{\numberline {2.6}Results}{8}{section.2.6}
+\contentsline {chapter}{\numberline {3}Jobs}{9}{chapter.3}
