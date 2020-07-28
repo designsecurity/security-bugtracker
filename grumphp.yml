@@ -1,0 +1,11 @@
+grumphp:
+  process_timeout: 120
+  tasks:
+      phpcs:
+        standard: PSR2
+        metadata:
+          priority: 300
+        
+      progpilot:
+        config_file: progpilot.yml
+        triggered_by: [php]
