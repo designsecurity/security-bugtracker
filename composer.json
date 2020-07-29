@@ -1,9 +1,23 @@
-{
+{    
+    "name": "designsecurity/security-bugtracker",
+    "description": "A security-bugtracker",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eric Therond",
+            "email": "eric.therond.fr@gmail.com"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require-dev": {
-        "phpro/grumphp": "^0.19.1",
         "squizlabs/php_codesniffer": "^3.5",
-        "designsecurity/progpilot": "^0.8.0"
+        "designsecurity/progpilot": "^0.8.0",
+        "phpro/grumphp": "^0.19.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "security-bugtracker": "package/src"
+        }
     }
 }
