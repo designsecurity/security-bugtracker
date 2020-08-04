@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-0": {
-            "security-bugtracker": "package/src"
+            "security-bugtracker": ["webissues-server-2.0.0", "security_tools"]
         }
     }
 }

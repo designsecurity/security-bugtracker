@@ -1,0 +1,600 @@
+<report id="609deae3-8688-4eb8-861c-fa4b41eb7489" format_id="a994b278-1f62-11e1-96ac-406186ea4fc5" extension="xml" type="scan" content_type="text/xml"><owner><name></name></owner><name>2015-10-20T14:42:22Z</name><comment></comment><creation_time>2015-10-20T14:42:22Z</creation_time><modification_time>2015-10-20T15:01:37Z</modification_time><writable>0</writable><in_use>0</in_use><task id="4b222d6f-1115-463b-8ea5-7c19058886c7"><name>test task</name></task><report_format id="a994b278-1f62-11e1-96ac-406186ea4fc5"><name>XML</name></report_format><report id="609deae3-8688-4eb8-861c-fa4b41eb7489"><omp><version>6.0</version></omp><report_format></report_format><sort><field>ROWID<order>ascending</order></field></sort><filters id="0">hmlgd<term>sort=ROWID result_hosts_only=0 min_cvss_base= min_qod= levels=hmlgd autofp=0 notes=0 overrides=0 first=0 rows=-1 delta_states=cgns</term><phrase></phrase><autofp>0</autofp><notes>0</notes><overrides>0</overrides><apply_overrides>0</apply_overrides><result_hosts_only>0</result_hosts_only><min_cvss_base></min_cvss_base><min_qod></min_qod><timezone></timezone><filter>High</filter><filter>Medium</filter><filter>Low</filter><filter>Log</filter><filter>Debug</filter></filters><severity_class id="d4c74cda-89e1-11e3-9c29-406186ea4fc5"><name>nist</name><full_name>NVD Vulnerability Severity Ratings</full_name><severity_range><name>None</name><min>0.0</min><max>0.0</max></severity_range><severity_range><name>Low</name><min>0.1</min><max>3.9</max></severity_range><severity_range><name>Medium</name><min>4.0</min><max>6.9</max></severity_range><severity_range><name>High</name><min>7.0</min><max>10.0</max></severity_range></severity_class><user_tags><count>0</count></user_tags><scan_run_status>Done</scan_run_status><hosts><count>1</count></hosts><closed_cves><count>0</count></closed_cves><vulns><count>56</count></vulns><os><count>1</count></os><apps><count>5</count></apps><ssl_certs><count>0</count></ssl_certs><task id="4b222d6f-1115-463b-8ea5-7c19058886c7"><name>test task</name><comment>test</comment><target id="15aff6dc-1cc2-40e5-a705-cefcec6bf71f"><trash>0</trash></target><progress>-1</progress></task><scan><task><slave id=""><name></name><host></host><port>0</port></slave><preferences><preference><name>Network Source Interface</name><scanner_name>source_iface</scanner_name><value></value></preference></preferences></task></scan><timestamp>2015-10-20T14:42:19Z</timestamp><scan_start>2015-10-20T14:42:22Z</scan_start><timezone>Coordinated Universal Time</timezone><timezone_abbrev>UTC</timezone_abbrev><ports max="-1" start="0"><count>7</count><port>22/tcp<host>127.0.0.1</host><severity>0.0</severity><threat>Log</threat></port><port>25/tcp<host>127.0.0.1</host><severity>0.0</severity><threat>Log</threat></port><port>80/tcp<host>127.0.0.1</host><severity>0.0</severity><threat>Log</threat></port><port>general/CPE-T<host>127.0.0.1</host><severity>0.0</severity><threat>Log</threat></port><port>general/tcp<host>127.0.0.1</host><severity>0.0</severity><threat>Log</threat></port><port>631/tcp<host>127.0.0.1</host><severity>5.0</severity><threat>Medium</threat></port><port>8080/tcp<host>127.0.0.1</host><severity>5.8</severity><threat>Medium</threat></port><port>3306/tcp<host>127.0.0.1</host><severity>9.0</severity><threat>High</threat></port><port>3128/tcp<host>127.0.0.1</host><severity>9.3</severity><threat>High</threat></port></ports><results max="-1" start="0"><result id="1c1f44e7-5a12-44ee-b00b-2a454f641e5b"><name>Services</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:48Z</creation_time><modification_time>2015-10-20T14:46:48Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>80/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.10330"><name>Services</name><family>Service detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This plugin attempts to guess which
+service is running on the remote ports. For instance,
+it searches for a web server which could listen on
+another port than 80 and set the results in the plugins
+knowledge base.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 69 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>A web server is running on this port</description></result><result id="a013c8de-4403-4087-bf53-2cc0235580ed"><name>Services</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:48Z</creation_time><modification_time>2015-10-20T14:46:48Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>25/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.10330"><name>Services</name><family>Service detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This plugin attempts to guess which
+service is running on the remote ports. For instance,
+it searches for a web server which could listen on
+another port than 80 and set the results in the plugins
+knowledge base.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 69 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>An SMTP server is running on this port
+Here is its banner : 
+220 linux-3ig5.site ESMTP </description></result><result id="e0c1aeff-22da-4873-ae6c-5ce343ca4b30"><name>Services</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:48Z</creation_time><modification_time>2015-10-20T14:46:48Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>3128/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.10330"><name>Services</name><family>Service detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This plugin attempts to guess which
+service is running on the remote ports. For instance,
+it searches for a web server which could listen on
+another port than 80 and set the results in the plugins
+knowledge base.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 69 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>A web server is running on this port</description></result><result id="c70fe6a6-31ce-4efa-bedb-9786775ddd7f"><name>Services</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:48Z</creation_time><modification_time>2015-10-20T14:46:48Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>3128/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.10330"><name>Services</name><family>Service detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This plugin attempts to guess which
+service is running on the remote ports. For instance,
+it searches for a web server which could listen on
+another port than 80 and set the results in the plugins
+knowledge base.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 69 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>An HTTP proxy is running on this port</description></result><result id="b2d3093d-eb4f-495f-aa2e-7b38d45ea559"><name>Services</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:52Z</creation_time><modification_time>2015-10-20T14:46:52Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>22/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.10330"><name>Services</name><family>Service detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This plugin attempts to guess which
+service is running on the remote ports. For instance,
+it searches for a web server which could listen on
+another port than 80 and set the results in the plugins
+knowledge base.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 69 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>An ssh server is running on this port</description></result><result id="877277e0-b021-41c8-b129-41f66fe1c077"><name>Services</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:53Z</creation_time><modification_time>2015-10-20T14:46:53Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>3306/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.10330"><name>Services</name><family>Service detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This plugin attempts to guess which
+service is running on the remote ports. For instance,
+it searches for a web server which could listen on
+another port than 80 and set the results in the plugins
+knowledge base.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 69 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>An unknown service is running on this port.
+It is usually reserved for MySQL</description></result><result id="4e32a428-89bc-462e-a006-ec1c416b1457"><name>Services</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:53Z</creation_time><modification_time>2015-10-20T14:46:53Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>8080/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.10330"><name>Services</name><family>Service detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This plugin attempts to guess which
+service is running on the remote ports. For instance,
+it searches for a web server which could listen on
+another port than 80 and set the results in the plugins
+knowledge base.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 69 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>An unknown service is running on this port.
+It is usually reserved for HTTP-Alt</description></result><result id="2dc1601d-3357-4b36-9a95-2e3aa69ec38a"><name>OS fingerprinting</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:53Z</creation_time><modification_time>2015-10-20T14:46:53Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>general/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.102002"><name>OS fingerprinting</name><family>Product detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>URL:http://www.phrack.org/issues.html?issue=57&amp;amp;id=7#article</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This script performs ICMP based OS fingerprinting (as described by
+Ofir Arkin and Fyodor Yarochkin in Phrack #57). It can be used to determine
+remote operating system version.|qod_type=remote_analysis</tags><cert></cert></nvt><scan_nvt_version>$Revision: 1739 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>70</value><type>remote_analysis</type></qod><description>ICMP based OS fingerprint results: (92% confidence)
+
+Linux Kernel</description></result><result id="e4239b1a-c4ac-4fd7-9cd5-a04cb2e00f3d"><name>Identify unknown services with GET</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:53Z</creation_time><modification_time>2015-10-20T14:46:53Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>8080/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.17975"><name>Identify unknown services with GET</name><family>Service detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This plugin performs service detection.
+
+ Description :
+ 
+ This plugin is a complement of find_service.nasl. It sends a GET
+ request to the remaining unknown services and tries to identify 
+ them.|qod_type=remote_banner</tags><cert></cert></nvt><scan_nvt_version>$Revision: 1718 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>80</value><type>remote_banner</type></qod><description>A web server is running on this port</description></result><result id="9ee4d561-7119-4ee5-85ba-64c35e1862e4"><name>Identify unknown services with GET</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:53Z</creation_time><modification_time>2015-10-20T14:46:53Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>631/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.17975"><name>Identify unknown services with GET</name><family>Service detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This plugin performs service detection.
+
+ Description :
+ 
+ This plugin is a complement of find_service.nasl. It sends a GET
+ request to the remaining unknown services and tries to identify 
+ them.|qod_type=remote_banner</tags><cert></cert></nvt><scan_nvt_version>$Revision: 1718 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>80</value><type>remote_banner</type></qod><description>A web server is running on this port</description></result><result id="bec644e1-ea3e-4c36-b571-2d05348c685a"><name>Identify unknown services with &apos;HELP&apos;</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:53Z</creation_time><modification_time>2015-10-20T14:46:53Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>8080/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.11153"><name>Identify unknown services with &apos;HELP&apos;</name><family>Service detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This plugin performs service detection.
+
+ Description :
+
+ This plugin is a complement of find_service.nasl. It sends a HELP 
+ request to the remaining unknown services and tries to identify them.|qod_type=remote_banner</tags><cert></cert></nvt><scan_nvt_version>$Revision: 1717 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>80</value><type>remote_banner</type></qod><description>A (non-RFC compliant) web server seems to be running on this port</description></result><result id="2ec27b00-98c4-431c-9d2b-1e8f44e0275f"><name>MySQL/MariaDB Detection</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:53Z</creation_time><modification_time>2015-10-20T14:46:53Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>3306/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.100152"><name>MySQL/MariaDB Detection</name><family>Product detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|detection=remote probe|qod_type=remote_banner|summary=Detection of installed version of
+  MySQL/MariaDB.
+
+  Detect a running MySQL/MariaDB by getting the banner, Extract the version
+  from the banner and store the information in KB</tags><cert></cert></nvt><scan_nvt_version>$Revision: 1542 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>80</value><type>remote_banner</type></qod><description>Detected MySQL
+Version: 5.6.25
+Location: 3306/tcp
+CPE: cpe:/a:oracle:mysql:5.6.25
+
+Concluded from version identification result:
+
+5.6.25     Tf&apos;-JnjJ ÿ÷!   &#x80;           puz&amp;M0EM4[MR mysql_native_password</description></result><result id="40f81c17-8aaa-4faf-859c-83f7297b3aa8"><name>HTTP Server type and version</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:53Z</creation_time><modification_time>2015-10-20T14:46:53Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>8080/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.10107"><name>HTTP Server type and version</name><family>General</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|solution=Configure your server to use an alternate name like
+    &apos;Wintendo httpD w/Dotmatrix display&apos;
+Be sure to remove common logos like apache_pb.gif.
+With Apache, you can set the directive &apos;ServerTokens Prod&apos; to limit
+the information emanating from the server in its response headers.|summary=This detects the HTTP Server&apos;s type and version.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 229 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>The remote web server type is :
+
+Apache 
+
+and the &apos;ServerTokens&apos; directive is ProductOnly
+Apache does not permit to hide the server type.</description></result><result id="4e88142c-a216-4333-b07d-c0fd29b144ac"><name>HTTP Server type and version</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:53Z</creation_time><modification_time>2015-10-20T14:46:53Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>631/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.10107"><name>HTTP Server type and version</name><family>General</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|solution=Configure your server to use an alternate name like
+    &apos;Wintendo httpD w/Dotmatrix display&apos;
+Be sure to remove common logos like apache_pb.gif.
+With Apache, you can set the directive &apos;ServerTokens Prod&apos; to limit
+the information emanating from the server in its response headers.|summary=This detects the HTTP Server&apos;s type and version.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 229 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>The remote web server type is :
+
+CUPS/1.5 </description></result><result id="5323769e-7373-4d94-9954-fb96bedee43a"><name>SSH Server type and version</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:54Z</creation_time><modification_time>2015-10-20T14:46:54Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>22/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.10267"><name>SSH Server type and version</name><family>Product detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|detection=remote probe|summary=This detects the SSH Server&apos;s type and version by connecting to the server
+and processing the buffer received.
+This information gives potential attackers additional information about the
+system they are attacking. Versions and Types should be omitted
+where possible.|solution=Apply filtering to disallow access to this port from untrusted hosts</tags><cert></cert></nvt><scan_nvt_version>$Revision: 1570 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>Detected SSH server version: SSH-2.0-OpenSSH_6.6.1
+Remote SSH supported authentication: publickey,keyboard-interactive
+Remote SSH banner: 
+(not available)
+
+CPE: cpe:/a:openbsd:openssh:6.6.1
+
+Concluded from remote connection attempt with credentials:
+  Login: OpenVAS
+  Password: OpenVAS</description></result><result id="ca0cc91a-1039-492a-b341-9ba0dc1bd487"><name>phpMyAdmin Detection</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:54Z</creation_time><modification_time>2015-10-20T14:46:54Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>8080/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.900129"><name>phpMyAdmin Detection</name><family>Product detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|detection=remote probe|summary=Detection of phpMyAdmin.
+
+  The script sends a connection request to the server and attempts to
+  extract the version number from the reply.|qod_type=remote_banner</tags><cert></cert></nvt><scan_nvt_version>$Revision: 1717 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>80</value><type>remote_banner</type></qod><description>Detected phpMyAdmin
+Version: unknown
+Location: /phpMyAdmin
+CPE: cpe:/a:phpmyadmin:phpmyadmin</description></result><result id="364d961d-f449-49d3-8bb7-79005b1d4216"><name>Apache Web Server Version Detection</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:54Z</creation_time><modification_time>2015-10-20T14:46:54Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>8080/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.900498"><name>Apache Web Server Version Detection</name><family>Product detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|qod_type=remote_banner|summary=Detection of installed version of Apache Web Server
+
+The script detects the version of Apache HTTP Server on remote host
+and sets the KB.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 1364 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>80</value><type>remote_banner</type></qod><description>Detected Apache
+Version: unknown
+Location: 8080/tcp
+CPE: cpe:/a:apache:http_server</description></result><result id="ba175144-1d17-4e1d-a9eb-386ff0910918"><name>SMTP Server type and version</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:54Z</creation_time><modification_time>2015-10-20T14:46:54Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>25/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.10263"><name>SMTP Server type and version</name><family>General</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This detects the SMTP Server&apos;s type and version by connecting to
+ the server and processing the buffer received.|solution=Change the login banner to something generic.|summary=This information gives potential
+ attackers additional information about the system they are attacking. Versions
+ and Types should be omitted where possible.|qod_type=remote_banner</tags><cert></cert></nvt><scan_nvt_version>$Revision: 1545 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>80</value><type>remote_banner</type></qod><description>Remote SMTP server banner :
+220 linux-3ig5.site ESMTP </description></result><result id="e56315eb-1226-435d-ad87-b2ce021071c7"><name>CUPS Version Detection</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:54Z</creation_time><modification_time>2015-10-20T14:46:54Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>general/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.900348"><name>CUPS Version Detection</name><family>Product detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|detection=remote probe|summary=Detection of installed version of Common Unix Printing System (CUPS)
+
+This script sends HTTP GET request and try to get the version from the
+response, and sets the result in KB.|qod_type=remote_banner</tags><cert></cert></nvt><scan_nvt_version>$Revision: 1339 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>80</value><type>remote_banner</type></qod><description>Detected CUPS
+Version: 1.5.4
+Location: /
+CPE: cpe:/a:apple:cups:1.5:4
+
+Concluded from version identification result:
+&lt;TITLE&gt;Home - CUPS 1.5.4&lt;/TITLE&gt;</description></result><result id="e115ab58-d0e0-4f8e-bd71-3b64bf0a4ae3"><name>Web mirroring</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:54Z</creation_time><modification_time>2015-10-20T14:46:54Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>631/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.10662"><name>Web mirroring</name><family>Web application abuses</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This script makes a mirror of the remote web site
+ and extracts the list of CGIs that are used by the remote host.
+
+ It is suggested you allow a long-enough timeout value for
+ this test routine and also adjust the setting on
+ the number of pages to mirror.|qod_type=remote_banner</tags><cert></cert></nvt><scan_nvt_version>$Revision: 1717 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>80</value><type>remote_banner</type></qod><description>The following CGI have been discovered :
+
+Syntax : cginame (arguments [default value])
+
+/admin/log/access_log ()
+/help/ref-classes-conf.html (SEARCH [Search] CLEAR [Clear] QUERY [] TOPIC [References] )
+/help/api-array.html (SEARCH [Search] CLEAR [Clear] QUERY [] TOPIC [Programming] )
+/help/api-filedir.html (SEARCH [Search] CLEAR [Clear] TOPIC [Programming] QUERY [] )
+/help/api-driver.html (SEARCH [Search] CLEAR [Clear] QUERY [] TOPIC [Programming] )
+/help/glossary.html (SEARCH [Search] CLEAR [Clear] QUERY [] TOPIC [Getting+Started] )
+/help/ref-client-conf.html (SEARCH [Search] CLEAR [Clear] PRINTABLE [YES] TOPIC [References] QUERY [] )
+/help/api-httpipp.html (SEARCH [Search] CLEAR [Clear] TOPIC [Programming] QUERY [] )
+/help/ref-error_log.html (SEARCH [Search] CLEAR [Clear] PRINTABLE [YES] QUERY [] TOPIC [References] )
+/admin/ (org.cups.sid [648945b6850b3a429c01d6dee8be8f5c] OP [add-printer] )
+/help/ref-subscriptions-conf.html (SEARCH [Search] CLEAR [Clear] QUERY [] TOPIC [References] )
+/help/license.html (SEARCH [Search] CLEAR [Clear] PRINTABLE [YES] TOPIC [Getting+Started] QUERY [] )
+/help/standard.html (SEARCH [Search] CLEAR [Clear] PRINTABLE [YES] TOPIC [Getting+Started] QUERY [] )
+/help/ref-cupsd-conf.html (SEARCH [Search] CLEAR [Clear] QUERY [] TOPIC [References] )
+/help/ref-page_log.html (SEARCH [Search] CLEAR [Clear] PRINTABLE [YES] QUERY [] TOPIC [References] )
+/printers/ (CLEAR [Clear] QUERY [] )
+/help/options.html (SEARCH [Search] CLEAR [Clear] TOPIC [Getting+Started] QUERY [] )
+/help/network.html (SEARCH [Search] CLEAR [Clear] QUERY [] TOPIC [Getting+Started] )
+/help/api-mime.html (SEARCH [Search] CLEAR [Clear] TOPIC [Programming] QUERY [] )
+/help/raster-driver.html (SEARCH [Search] CLEAR [Clear] TOPIC [Programming] QUERY [] )
+/help/api-ppd.html (SEARCH [Search] CLEAR [Clear] QUERY [] TOPIC [Programming] )
+/jobs (which_jobs [completed] )
+/help/translation.html (SEARCH [Search] CLEAR [Clear] QUERY [] TOPIC [Getting+Started] )
+/help/api-cgi.html (SEARCH [Search] CLEAR [Clear] TOPIC [Programming] QUERY [] )
+/help/api-cups.html (SEARCH [Search] CLEAR [Clear] QUERY [] TOPIC [Programming] )
+/jobs/ (CLEAR [Clear] ORDER [asc] QUERY [] )
+/help/api-ppdc.html (SEARCH [Search] CLEAR [Clear] TOPIC [Programming] QUERY [] )
+/help/ref-printers-conf.html (SEARCH [Search] CLEAR [Clear] TOPIC [References] QUERY [] )
+/help/api-raster.html (SEARCH [Search] CLEAR [Clear] TOPIC [Programming] QUERY [] )
+/help/ref-snmp-conf.html (SEARCH [Search] CLEAR [Clear] PRINTABLE [YES] TOPIC [References] QUERY [] )
+/admin/log/error_log ()
+/help/sharing.html (SEARCH [Search] CLEAR [Clear] PRINTABLE [YES] TOPIC [Getting+Started] QUERY [] )
+/help/kerberos.html (SEARCH [Search] CLEAR [Clear] PRINTABLE [YES] TOPIC [Getting+Started] QUERY [] )
+/help/api-overview.html (SEARCH [Search] CLEAR [Clear] PRINTABLE [YES] TOPIC [Programming] QUERY [] )
+/help/ppd-compiler.html (SEARCH [Search] CLEAR [Clear] QUERY [] TOPIC [Programming] )
+/help/ (SEARCH [Search] CLEAR [Clear] QUERY [] TOPIC [Getting+Started] )
+/help/ref-access_log.html (SEARCH [Search] CLEAR [Clear] PRINTABLE [YES] TOPIC [References] QUERY [] )
+/help/postscript-driver.html (SEARCH [Search] CLEAR [Clear] TOPIC [Programming] QUERY [] )
+/classes/ (CLEAR [Clear] QUERY [] )
+/help/cgi.html (SEARCH [Search] CLEAR [Clear] PRINTABLE [YES] TOPIC [Getting+Started] QUERY [] )
+/help/api-filter.html (SEARCH [Search] CLEAR [Clear] QUERY [] TOPIC [Programming] )
+/help/overview.html (SEARCH [Search] CLEAR [Clear] PRINTABLE [YES] TOPIC [Getting Started] QUERY [] )
+/help/policies.html (SEARCH [Search] CLEAR [Clear] QUERY [] TOPIC [Getting+Started] )
+/help/security.html (SEARCH [Search] CLEAR [Clear] PRINTABLE [YES] TOPIC [Getting+Started] QUERY [] )
+/help/whatsnew.html (SEARCH [Search] CLEAR [Clear] PRINTABLE [YES] QUERY [] TOPIC [Getting+Started] )
+/help/ref-ppdcfile.html (SEARCH [Search] CLEAR [Clear] QUERY [] TOPIC [References] )
+/help/ref-mailto-conf.html (SEARCH [Search] CLEAR [Clear] PRINTABLE [YES] QUERY [] TOPIC [References] )
+/help/accounting.html (SEARCH [Search] CLEAR [Clear] PRINTABLE [YES] TOPIC [Getting+Started] QUERY [] )
+
+The following directories have been discovered :
+
+/images
+/classes
+/help
+/jobs
+/printers</description></result><result id="6ba82980-51d5-45ba-8786-a6e31decb061"><name>HTTP Proxy Server Detection</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:54Z</creation_time><modification_time>2015-10-20T14:46:54Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>3128/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.100083"><name>HTTP Proxy Server Detection</name><family>Firewalls</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|solution=Limit access to the proxy to valid users and/or valid hosts.|summary=A HTTP proxy server is running at this Host and accepts
+   unauthenticated requests from the OpenVAS Scanner.
+
+   An open proxy is a proxy server that is accessible by any Internet
+   user. Generally, a proxy server allows users within a network group
+   to store and forward Internet services such as DNS or web pages to
+   reduce and control the bandwidth used by the group. With an open
+   proxy, however, any user on the Internet is able to use this
+   forwarding service.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 43 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description></description></result><result id="5ccdd39a-91ae-4081-b26a-2ed7d7e5e3e8"><name>HTTP Proxy Server Detection</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:46:54Z</creation_time><modification_time>2015-10-20T14:46:54Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>3128/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.100083"><name>HTTP Proxy Server Detection</name><family>Firewalls</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|solution=Limit access to the proxy to valid users and/or valid hosts.|summary=A HTTP proxy server is running at this Host and accepts
+   unauthenticated requests from the OpenVAS Scanner.
+
+   An open proxy is a proxy server that is accessible by any Internet
+   user. Generally, a proxy server allows users within a network group
+   to store and forward Internet services such as DNS or web pages to
+   reduce and control the bandwidth used by the group. With an open
+   proxy, however, any user on the Internet is able to use this
+   forwarding service.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 43 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description></description></result><result id="8cf83307-adee-4a85-be78-786630193a19"><name>wapiti (NASL wrapper)</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:47:12Z</creation_time><modification_time>2015-10-20T14:47:12Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>8080/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.80110"><name>wapiti (NASL wrapper)</name><family>Web application abuses</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This plugin uses wapiti to find  
+web security issues.
+
+Make sure to have wapiti 2.x as wapiti 1.x is not supported. 
+
+See the preferences section for wapiti options.
+
+Note that OpenVAS is using limited set of wapiti options.
+Therefore, for more complete web assessment, you should
+use standalone wapiti tool for deeper/customized checks.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 14 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>wapiti could not be found in your system path.
+OpenVAS was unable to execute wapiti and to perform the scan you
+requested.
+Please make sure that wapiti is installed and that wapiti is
+available in the PATH variable defined for your environment.</description></result><result id="1c405ab5-0cfb-49d9-bb9a-c16fb6bfc581"><name>wapiti (NASL wrapper)</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:47:12Z</creation_time><modification_time>2015-10-20T14:47:12Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>3128/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.80110"><name>wapiti (NASL wrapper)</name><family>Web application abuses</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This plugin uses wapiti to find  
+web security issues.
+
+Make sure to have wapiti 2.x as wapiti 1.x is not supported. 
+
+See the preferences section for wapiti options.
+
+Note that OpenVAS is using limited set of wapiti options.
+Therefore, for more complete web assessment, you should
+use standalone wapiti tool for deeper/customized checks.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 14 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>wapiti could not be found in your system path.
+OpenVAS was unable to execute wapiti and to perform the scan you
+requested.
+Please make sure that wapiti is installed and that wapiti is
+available in the PATH variable defined for your environment.</description></result><result id="6284fd78-fed0-49a9-a918-c089d49260c1"><name>wapiti (NASL wrapper)</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:47:12Z</creation_time><modification_time>2015-10-20T14:47:12Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>631/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.80110"><name>wapiti (NASL wrapper)</name><family>Web application abuses</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This plugin uses wapiti to find  
+web security issues.
+
+Make sure to have wapiti 2.x as wapiti 1.x is not supported. 
+
+See the preferences section for wapiti options.
+
+Note that OpenVAS is using limited set of wapiti options.
+Therefore, for more complete web assessment, you should
+use standalone wapiti tool for deeper/customized checks.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 14 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>wapiti could not be found in your system path.
+OpenVAS was unable to execute wapiti and to perform the scan you
+requested.
+Please make sure that wapiti is installed and that wapiti is
+available in the PATH variable defined for your environment.</description></result><result id="e2bb2039-96da-4546-b2b4-e3982e35fd90"><name>wapiti (NASL wrapper)</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:47:12Z</creation_time><modification_time>2015-10-20T14:47:12Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>80/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.80110"><name>wapiti (NASL wrapper)</name><family>Web application abuses</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This plugin uses wapiti to find  
+web security issues.
+
+Make sure to have wapiti 2.x as wapiti 1.x is not supported. 
+
+See the preferences section for wapiti options.
+
+Note that OpenVAS is using limited set of wapiti options.
+Therefore, for more complete web assessment, you should
+use standalone wapiti tool for deeper/customized checks.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 14 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>wapiti could not be found in your system path.
+OpenVAS was unable to execute wapiti and to perform the scan you
+requested.
+Please make sure that wapiti is installed and that wapiti is
+available in the PATH variable defined for your environment.</description></result><result id="b35cbf6f-cd4f-4fb3-9a46-ee21ae68257b"><name>DIRB (NASL wrapper)</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:47:25Z</creation_time><modification_time>2015-10-20T14:47:25Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>general/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.103079"><name>DIRB (NASL wrapper)</name><family>Web application abuses</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This script uses DIRB to find directories and files on web
+          applications via brute forcing.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 13 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>DIRB could not be found in your system path.
+OpenVAS was unable to execute DIRB and to perform the scan you
+requested.
+Please make sure that DIRB is installed and is
+available in the PATH variable defined for your environment.</description></result><result id="e925b949-94a3-4ea3-8242-9802412f3f41"><name>SSH Protocol Versions Supported</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:47:44Z</creation_time><modification_time>2015-10-20T14:47:44Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>22/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.100259"><name>SSH Protocol Versions Supported</name><family>Service detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|qod_type=remote_active|summary=Identification of SSH protocol versions supported by the remote
+SSH Server. Also reads the corresponding fingerprints from the service.
+
+The following versions are tried: 1.33, 1.5, 1.99 and 2.0</tags><cert></cert></nvt><scan_nvt_version>$Revision: 1570 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>95</value><type>remote_active</type></qod><description>The remote SSH Server supports the following SSH Protocol Versions:
+1.99
+2.0</description></result><result id="41773450-756a-44dd-abf3-c45c60feecfb"><name>arachni (NASL wrapper)</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:47:46Z</creation_time><modification_time>2015-10-20T14:47:46Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>general/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.110001"><name>arachni (NASL wrapper)</name><family>Web application abuses</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This plugin uses arachni ruby command line to find  
+web security issues.
+
+See the preferences section for arachni options.
+
+Note that OpenVAS is using limited set of arachni options.
+Therefore, for more complete web assessment, you should
+use standalone arachni tool for deeper/customized checks.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 683 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>Arachni could not be found in your system path.
+OpenVAS was unable to execute Arachni and to perform the scan you
+requested.
+Please make sure that Arachni is installed and that arachni is
+available in the PATH variable defined for your environment.</description></result><result id="0c58c1e2-1bf4-4c80-be10-244e8b8ea32e"><name>MySQL Authentication Error Message User Enumeration Vulnerability</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:48:14Z</creation_time><modification_time>2015-10-20T14:48:14Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>3306/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.802046"><name>MySQL Authentication Error Message User Enumeration Vulnerability</name><family>Databases</family><cvss_base>5.0</cvss_base><cve>CVE-2012-5615</cve><bid>56766</bid><xref>URL:http://osvdb.org/88067, URL:http://secunia.com/advisories/51427, URL:http://www.exploit-db.com/exploits/23081, URL:https://mariadb.atlassian.net/browse/MDEV-3909, URL:https://bugzilla.redhat.com/show_bug.cgi?id=882608, URL:http://www.openwall.com/lists/oss-security/2012/12/02/3, URL:http://www.openwall.com/lists/oss-security/2012/12/02/4</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:P/I:N/A:N|qod_type=remote_active|impact=Successful exploitation allows attackers to obtain valid
+usernames, which may aid them in brute-force password cracking or other attacks.
+
+Impact Level: Application|affected=MySQL version 5.5.19 and possibly other versions
+MariaDB 5.5.28a, 5.3.11, 5.2.13, 5.1.66 and possibly other versions|insight=Mysql server will respond with a different message than Access
+Denied, when attacker authenticates using an incorrect password with the old
+authentication mechanism mysql 4.x and below to a mysql 5.x server.|solution=For Maria DB upgrade to 5.5.29, 5.3.12, 5.2.14 or later.
+For updates refer to https://mariadb.org/
+
+For MySQL apply the updates from vendor, http://www.mysql.com/|summary=The host is running MySQL and is prone to user enumeration
+vulnerability.</tags><cert><cert_ref id="DFN-CERT-2015-0593" type="DFN-CERT"></cert_ref><cert_ref id="DFN-CERT-2015-0427" type="DFN-CERT"></cert_ref><cert_ref id="DFN-CERT-2014-1500" type="DFN-CERT"></cert_ref><cert_ref id="DFN-CERT-2014-1489" type="DFN-CERT"></cert_ref><cert_ref id="DFN-CERT-2014-1357" type="DFN-CERT"></cert_ref><cert_ref id="DFN-CERT-2013-0259" type="DFN-CERT"></cert_ref></cert></nvt><scan_nvt_version>$Revision: 1046 $</scan_nvt_version><threat>Medium</threat><severity>5.0</severity><qod><value>95</value><type>remote_active</type></qod><description></description></result><result id="f692bcc2-9180-4b3c-920f-a792e0ae8e99"><name>Database Open Access Vulnerability</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:48:15Z</creation_time><modification_time>2015-10-20T14:48:15Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>3306/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.902799"><name>Database Open Access Vulnerability</name><family>Databases</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>URL:https://www.pcisecuritystandards.org/security_standards/index.php?id=pci_dss_v1-2.pdf</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|impact=Successful exploitation could allow an attacker to obtain the sensitive
+  information of the database.
+  Impact Level: Application|insight=Do not restricting direct access of databases to the remote systems.|summary=The host is running a Database server and is prone to information
+  disclosure vulnerability.|affected=MySQL
+  IBM DB2
+  PostgreSQL
+  IBM solidDB
+  Oracle Database
+  Microsoft SQL Server
+
+  Workaround:
+  Restrict Database access to remote systems.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 12 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>MySQL can be accessed by remote attackers</description></result><result id="855c160f-13f8-4817-bbb9-46542d7d78f8"><name>Check for SSL Weak Ciphers</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:48:31Z</creation_time><modification_time>2015-10-20T14:48:31Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>631/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.103440"><name>Check for SSL Weak Ciphers</name><family>General</family><cvss_base>4.3</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:M/Au:N/C:P/I:N/A:N|summary=This routine search for weak SSL ciphers offered by a service.|solution=The configuration of this services should be changed so
+that it does not support the listed weak ciphers anymore.|insight=These rules are applied for the evaluation of the cryptographic strength:
+
+- Any SSL/TLS using no cipher is considered weak.
+
+- All SSLv2 ciphers are considered weak due to a design flaw within the SSLv2 protocol.
+
+- RC4 is considered to be weak.
+
+- Ciphers using 64 bit or less are considered to be vulnerable to brute force methods
+  and therefore considered as weak.
+
+- 1024 bit RSA authentication is considered to be insecure and therefore as weak.
+
+- CBC ciphers in TLS &lt; 1.2 are considered to be vulnerable to the BEAST or Lucky 13 attacks
+
+- Any cipher considered to be secure for only the next 10 years is considered as medium
+
+- Any other cipher is considered as strong</tags><cert></cert></nvt><scan_nvt_version>$Revision: 733 $</scan_nvt_version><threat>Medium</threat><severity>4.3</severity><qod><value>75</value><type></type></qod><description>Weak ciphers offered by this service:
+  SSL3_RSA_RC4_128_MD5
+  SSL3_RSA_RC4_128_SHA
+  SSL3_RSA_WITH_SEED_SHA
+  TLS1_RSA_RC4_128_MD5
+  TLS1_RSA_RC4_128_SHA</description></result><result id="8e691879-416d-45fa-9826-fd70b0584706"><name>Check for SSL Medium Ciphers</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:48:31Z</creation_time><modification_time>2015-10-20T14:48:31Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>631/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.902816"><name>Check for SSL Medium Ciphers</name><family>General</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This Plugin reports about SSL Medium Ciphers.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 12 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>Medium ciphers offered by this service:
+  SSL3_RSA_DES_192_CBC3_SHA
+  SSL3_RSA_WITH_CAMELLIA_128_CBC_SHA
+  SSL3_RSA_WITH_CAMELLIA_256_CBC_SHA
+  TLS1_RSA_DES_192_CBC3_SHA
+  TLS1_RSA_WITH_CAMELLIA_128_CBC_SHA
+  TLS1_RSA_WITH_CAMELLIA_256_CBC_SHA
+  TLS1_RSA_WITH_SEED_SHA</description></result><result id="d8e54749-a5f5-4056-97f4-8472632fad12"><name>SMTP Missing Support For STARTTLS</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:48:33Z</creation_time><modification_time>2015-10-20T14:48:33Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>25/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.105091"><name>SMTP Missing Support For STARTTLS</name><family>Service detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=The remote Mailserver does not support the STARTTLS command.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 703 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>The remote Mailserver does not support the STARTTLS command.</description></result><result id="fc42ca64-29c5-4324-8bc4-f2aefb4c7853"><name>Check for SSL Ciphers</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:48:33Z</creation_time><modification_time>2015-10-20T14:48:33Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>631/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.802067"><name>Check for SSL Ciphers</name><family>General</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This routine search for SSL ciphers offered by a service.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 312 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>Service does not support SSLv2 ciphers.
+
+Service supports SSLv3 ciphers.
+
+Service supports TLSv1 ciphers.
+
+Medium ciphers offered by this service:
+  SSL3_RSA_DES_192_CBC3_SHA
+  SSL3_RSA_WITH_CAMELLIA_128_CBC_SHA
+  SSL3_RSA_WITH_CAMELLIA_256_CBC_SHA
+  TLS1_RSA_DES_192_CBC3_SHA
+  TLS1_RSA_WITH_CAMELLIA_128_CBC_SHA
+  TLS1_RSA_WITH_CAMELLIA_256_CBC_SHA
+  TLS1_RSA_WITH_SEED_SHA
+
+Weak ciphers offered by this service:
+  SSL3_RSA_RC4_128_MD5
+  SSL3_RSA_RC4_128_SHA
+  SSL3_RSA_WITH_SEED_SHA
+  TLS1_RSA_RC4_128_MD5
+  TLS1_RSA_RC4_128_SHA
+
+No non-ciphers are supported by this service</description></result><result id="e4994d23-ebba-40a0-ae5e-bc663fdfa901"><name>Directories used for CGI Scanning</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:48:49Z</creation_time><modification_time>2015-10-20T14:48:49Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>8080/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.111038"><name>Directories used for CGI Scanning</name><family>Web application abuses</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=The script prints out the directories which
+  are used when CGI scanning is enabled.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 1727 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>The following directories are used for CGI scanning:
+
+/scripts
+/cgi-bin
+/</description></result><result id="c4744248-a2d1-4d32-a148-702be1828627"><name>Directories used for CGI Scanning</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:48:49Z</creation_time><modification_time>2015-10-20T14:48:49Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>3128/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.111038"><name>Directories used for CGI Scanning</name><family>Web application abuses</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=The script prints out the directories which
+  are used when CGI scanning is enabled.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 1727 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>The following directories are used for CGI scanning:
+
+/scripts
+/cgi-bin
+/</description></result><result id="25c58af7-9fe8-4399-abc0-457dca8cb554"><name>Directories used for CGI Scanning</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:48:49Z</creation_time><modification_time>2015-10-20T14:48:49Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>631/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.111038"><name>Directories used for CGI Scanning</name><family>Web application abuses</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=The script prints out the directories which
+  are used when CGI scanning is enabled.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 1727 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>The following directories are used for CGI scanning:
+
+/scripts
+/cgi-bin
+/help
+/images
+/jobs
+/classes
+/printers
+/</description></result><result id="e0d1d8a4-badc-4634-8b17-ba684833f0b9"><name>Directories used for CGI Scanning</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:48:50Z</creation_time><modification_time>2015-10-20T14:48:50Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>80/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.111038"><name>Directories used for CGI Scanning</name><family>Web application abuses</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=The script prints out the directories which
+  are used when CGI scanning is enabled.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 1727 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>The following directories are used for CGI scanning:
+
+/scripts
+/cgi-bin
+/</description></result><result id="ef95062d-61cf-4f55-9691-04eb953ce5a6"><name>Nikto (NASL wrapper)</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:49:26Z</creation_time><modification_time>2015-10-20T14:49:26Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>general/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.14260"><name>Nikto (NASL wrapper)</name><family>Web application abuses</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This plugin uses nikto(1) to find weak CGI scripts
+and other known issues regarding web server security.
+See the preferences section for configuration options.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 995 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>Nikto could not be found in your system path.
+OpenVAS was unable to execute Nikto and to perform the scan you
+requested.
+Please make sure that Nikto is installed and that nikto.pl or nikto is
+available in the PATH variable defined for your environment.</description></result><result id="abec10a8-19fd-4641-a195-3834e3b25af1"><name>DCShop exposes sensitive files</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:50:02Z</creation_time><modification_time>2015-10-20T14:50:02Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>631/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.10718"><name>DCShop exposes sensitive files</name><family>General</family><cvss_base>5.0</cvss_base><cve>CVE-2001-0821</cve><bid>2889</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:P/I:N/A:N|solution=1. Rename following directories to something hard to guess:
+ - Data
+ - User_carts
+ - Orders
+ - Auth_data
+
+2. Make these changes to dcshop.setup and dcshop_admin.setup. 
+
+- In dcshop.setup, modify:
+
+$datadir = &apos;$cgidir/Data&apos;
+$cart_dir = &apos;$cgidir/User_carts&apos;
+$order_dir = &apos;$cgidir/Orders&apos;
+
+- In dcshop_admin.setup, modify:
+
+$password_file_dir = &apos;$path/Auth_data&apos;
+
+3. Rename dcshop.setup and dcshop_admin.setup to something difficult to guess.
+For example, dcshop_4314312.setup and dcshop_admin_3124214.setup
+
+4. Edit dcshop.cgi, dcshop_admin.cgi, and dcshop_checkout.cgi and modify the 
+require statement for dcshop.setup and dcshop_admin.setup. That is:
+
+- In dcshop.cgi, modify
+
+require &apos;$path/dcshop.setup&apos;
+
+so that it uses new setup file. For example,
+
+require &apos;$path/dcshop_4314312.setup&apos;
+
+- In dcshop_admin.cgi, modify
+
+require &apos;$path/dcshop.setup&apos;
+require &apos;$path/dcshop_admin.setup&apos;
+
+so that it uses new setup file. For example,
+
+require &apos;$path/dcshop_4314312.setup&apos;
+require &apos;$path/dcshop_admin_3124214.setup&apos;
+
+- In dcshop_checkout.cgi, modify
+
+require &apos;$path/dcshop.setup&apos;
+
+so that it uses new setup file. For example,
+
+require &apos;$path/dcshop_4314312.setup&apos;
+
+5. Save following file as index.html and upload it to your 
+/cgi-bin/dcshop directory, thereby hiding directory listing. On 
+NT servers, you may have to rename this file to default.htm.
+
+http://www.dcscripts.com/FAQ/
+
+This page show &apos;Internal Server Error&apos; so it is not an error page...
+it&apos;s just an index.html file to HIDE directories.
+
+6. Replace your current files with above files
+
+Additional information:
+http://www.securiteam.com/unixfocus/5RP0N2K4KE.html|summary=We detected a vulnerable version of the DCShop CGI. 
+This version does not properly protect user and credit card information.
+It is possible to access files that contain administrative passwords, 
+current and pending transactions and credit card information (along with name, 
+address, etc).</tags><cert></cert></nvt><scan_nvt_version>$Revision: 17 $</scan_nvt_version><threat>Medium</threat><severity>5.0</severity><qod><value>75</value><type></type></qod><description>Summary:
+ We detected a vulnerable version of the DCShop CGI. 
+This version does not properly protect user and credit card information.
+It is possible to access files that contain administrative passwords, 
+current and pending transactions and credit card information (along with name, 
+address, etc).
+ Solution:
+ 1. Rename following directories to something hard to guess:
+ - Data
+ - User_carts
+ - Orders
+ - Auth_data
+
+2. Make these changes to dcshop.setup and dcshop_admin.setup. 
+
+- In dcshop.setup, modify:
+
+$datadir = &apos;$cgidir/Data&apos;
+$cart_dir = &apos;$cgidir/User_carts&apos;
+$order_dir = &apos;$cgidir/Orders&apos;
+
+- In dcshop_admin.setup, modify:
+
+$password_file_dir = &apos;$path/Auth_data&apos;
+
+3. Rename dcshop.setup and dcshop_admin.setup to something difficult to guess.
+For example, dcshop_4314312.setup and dcshop_admin_3124214.setup
+
+4. Edit dcshop.cgi, dcshop_admin.cgi, and dcshop_checkout.cgi and modify the 
+require statement for dcshop.setup and dcshop_admin.setup. That is:
+
+- In dcshop.cgi, modify
+
+require &apos;$path/dcshop.setup&apos;
+
+so that it uses new setup file. For example,
+
+require &apos;$path/dcshop_4314312.setup&apos;
+
+- In dcshop_admin.cgi, modify
+
+require &apos;$path/dcshop.setup&apos;
+require &apos;$path/dcshop_admin.setup&apos;
+
+so that it uses new setup file. For example,
+
+require &apos;$path/dcshop_4314312.setup&apos;
+require &apos;$path/dcshop_admin_3124214.setup&apos;
+
+- In dcshop_checkout.cgi, modify
+
+require &apos;$path/dcshop.setup&apos;
+
+so that it uses new setup file. For example,
+
+require &apos;$path/dcshop_4314312.setup&apos;
+
+5. Save following file as index.html and upload it to your 
+/cgi-bin/dcshop directory, thereby hiding directory listing. On 
+NT servers, you may have to rename this file to default.htm.
+
+http://www.dcscripts.com/FAQ/
+
+This page show &apos;Internal Server Error&apos; so it is not an error page...
+it&apos;s just an index.html file to HIDE directories.
+
+6. Replace your current files with above files
+
+Additional information:
+http://www.securiteam.com/unixfocus/5RP0N2K4KE.html
+
+
+The following files are affected:
+
+DCShop orders file: /printers/Orders/orders.txt
+DCShop orders file: /printers/orders/orders.txt
+DCShop authentication file: /printers/Auth_data/auth_user_file.txt
+DCShop authentication file: /printers/auth_data/auth_user_file.txt</description></result><result id="ee1f05e9-9a16-4566-a705-8fcaa6c855d8"><name>http TRACE XSS attack</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:50:56Z</creation_time><modification_time>2015-10-20T14:50:56Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>8080/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.11213"><name>http TRACE XSS attack</name><family>Web application abuses</family><cvss_base>5.8</cvss_base><cve>CVE-2004-2320, CVE-2003-1567</cve><bid>9506, 9561, 11604</bid><xref>URL:http://www.kb.cert.org/vuls/id/867593</xref><tags>cvss_base_vector=AV:N/AC:M/Au:N/C:P/I:P/A:N|summary=Debugging functions are enabled on the remote HTTP server.
+
+The remote webserver supports the TRACE and/or TRACK methods. TRACE and TRACK
+are HTTP methods which are used to debug web server connections.   
+
+It has been shown that servers supporting this method are subject to
+cross-site-scripting attacks, dubbed XST for Cross-Site-Tracing, when
+used in conjunction with various weaknesses in browsers. 
+
+An attacker may use this flaw to trick your legitimate web users to give
+him their credentials.|solution=Disable these methods.</tags><cert><cert_ref id="DFN-CERT-2014-1018" type="DFN-CERT"></cert_ref></cert></nvt><scan_nvt_version>$Revision: 922 $</scan_nvt_version><threat>Medium</threat><severity>5.8</severity><qod><value>75</value><type></type></qod><description>Solution: 
+Add the following lines for each virtual host in your configuration file :
+
+    RewriteEngine on
+    RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)
+    RewriteRule .* - [F]
+
+See also http://httpd.apache.org/docs/current/de/mod/core.html#traceenable</description></result><result id="e9d741b3-c0b8-48f4-8c6b-3b2c4956aac4"><name>Traceroute</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:51:13Z</creation_time><modification_time>2015-10-20T14:51:13Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>general/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.51662"><name>Traceroute</name><family>General</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|solution=Block unwanted packets from escaping your network.|summary=A traceroute from the scanning server to the target system was
+conducted. This traceroute is provided primarily for informational
+value only. In the vast majority of cases, it does not represent a
+vulnerability. However, if the displayed traceroute contains any
+private addresses that should not have been publicly visible, then you
+have an issue you need to correct.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 975 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>Here is the route from 127.0.0.1 to 127.0.0.1:
+
+127.0.0.1</description></result><result id="d03270e8-9a4f-435a-a1a6-767ed139008c"><name>MySQL weak password</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T14:53:55Z</creation_time><modification_time>2015-10-20T14:53:55Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>3306/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.103551"><name>MySQL weak password</name><family>Default Accounts</family><cvss_base>9.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:C/I:P/A:P|qod_type=remote_active|solution=Change the password as soon as possible.|summary=It was possible to login into the remote MySQL as root using weak credentials.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 1046 $</scan_nvt_version><threat>High</threat><severity>9.0</severity><qod><value>95</value><type>remote_active</type></qod><description>Summary:
+ It was possible to login into the remote MySQL as root using weak credentials.
+ Solution:
+ Change the password as soon as possible.
+
+It was possible to login as root with password &quot;root&quot;.</description></result><result id="cfb9aa54-908c-42c5-b67d-5d62e539839d"><name>Proxy accepts CONNECT requests to itself</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T15:00:43Z</creation_time><modification_time>2015-10-20T15:00:43Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>3128/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.17154"><name>Proxy accepts CONNECT requests to itself</name><family>Denial of Service</family><cvss_base>9.3</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:M/Au:N/C:C/I:C/A:C|solution=reconfigure your proxy so that
+          it refuses CONNECT requests to itself.|summary=The proxy allows the users to perform
+repeated CONNECT requests to itself.
+
+This allow anybody to saturate the proxy CPU, memory or 
+file descriptors.
+
+** Note that if the proxy limits the number of connections
+** from a single IP (e.g. acl maxconn with Squid), it is 
+** protected against saturation and you may ignore this alert.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 17 $</scan_nvt_version><threat>High</threat><severity>9.3</severity><qod><value>75</value><type></type></qod><description></description></result><result id="41228585-c5f5-4bab-a942-33bd32458c5a"><name>robot(s).txt exists on the Web Server</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T15:00:44Z</creation_time><modification_time>2015-10-20T15:00:44Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>631/tcp</port><nvt oid="1.3.6.1.4.1.25623.1.0.10302"><name>robot(s).txt exists on the Web Server</name><family>General</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|insight=Any serious web search engine will honor the /robot(s).txt file
+and not scan the files and directories listed there.
+
+Any entries listed in this file are not even hidden anymore.|summary=Web Servers can use a file called /robot(s).txt to ask search engines
+to ignore certain files and directories. By nature this file can not be used
+to protect private files from public read access.|solution=Review the content of the robots file and consider removing
+the files from the server or protect them in other ways in case
+you actually intended non-public availability.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 673 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>The file &apos;robots.txt&apos; contains the following:
+#
+# &quot;$Id: robots.txt 3494 2003-03-19 15:37:44Z mike $&quot;
+#
+#   This file tells search engines not to index your CUPS server.
+#
+#   Copyright 1993-2003 by Easy Software Products.
+#
+#   These coded instructions, statements, and computer programs are the
+#   property of Easy Software Products and are protected by Federal
+#   copyright law.  Distribution and use rights are outlined in the file
+#   &quot;LICENSE.txt&quot; which should have been included with this file.  If this
+#   file is missing or damaged please contact Easy Software Products
+#   at:
+#
+#       Attn: CUPS Licensing Information
+#       Easy Software Products
+#       44141 Airport View Drive, Suite 204
+#       Hollywood, Maryland 20636-3111 USA
+#
+#       Voice: (301) 373-9600
+#       EMail: cups-info@cups.org
+#         WWW: http://www.cups.org
+#
+
+User-agent: *
+Disallow: /
+
+#
+# End of &quot;$Id: robots.txt 3494 2003-03-19 15:37:44Z mike $&quot;.
+#</description></result><result id="e9646ffe-2f0d-4300-9e9c-6e0f4116857c"><name>CPE Inventory</name><owner><name>admin</name></owner><comment></comment><creation_time>2015-10-20T15:02:43Z</creation_time><modification_time>2015-10-20T15:02:43Z</modification_time><user_tags><count>0</count></user_tags><host>127.0.0.1</host><port>general/CPE-T</port><nvt oid="1.3.6.1.4.1.25623.1.0.810002"><name>CPE Inventory</name><family>Service detection</family><cvss_base>0.0</cvss_base><cve>NOCVE</cve><bid>NOBID</bid><xref>NOXREF</xref><tags>cvss_base_vector=AV:N/AC:L/Au:N/C:N/I:N/A:N|summary=This routine uses information collected by other routines about
+CPE identities (http://cpe.mitre.org/) of operating systems, services and
+applications detected during the scan.</tags><cert></cert></nvt><scan_nvt_version>$Revision: 314 $</scan_nvt_version><threat>Log</threat><severity>0.0</severity><qod><value>75</value><type></type></qod><description>127.0.0.1|cpe:/a:apple:cups:1.5:4
+127.0.0.1|cpe:/a:phpmyadmin:phpmyadmin
+127.0.0.1|cpe:/a:oracle:mysql:5.6.25
+127.0.0.1|cpe:/a:openbsd:openssh:6.6.1
+127.0.0.1|cpe:/a:apache:http_server
+127.0.0.1|cpe:/o:linux:kernel</description></result></results><result_count>71<full>71</full><filtered>47</filtered><debug><full>0</full><filtered>0</filtered></debug><hole><full>2</full><filtered>2</filtered></hole><info><full>0</full><filtered>0</filtered></info><log><full>41</full><filtered>41</filtered></log><warning><full>4</full><filtered>4</filtered></warning><false_positive><full>0</full><filtered>0</filtered></false_positive></result_count><severity><full>9.3</full><filtered>9.3</filtered></severity><host><ip>127.0.0.1</ip><start>2015-10-20T14:42:29Z</start><end>2015-10-20T15:01:37Z</end><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.111025</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805237</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.801636</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.803110</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805445</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805373</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805347</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.804775</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.902928</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805671</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805139</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.103334</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805331</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.804766</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.802043</name><description></description></source><extra></extra></detail><detail><name>ports</name><value>631,80,3128,8080,22,25,3306</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.900239</name><description>Check Open TCP Ports</description></source><extra></extra></detail><detail><name>tcp_ports</name><value>631,80,3128,8080,22,25,3306</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.900239</name><description>Check Open TCP Ports</description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.103811</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805494</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805497</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.10676</name><description></description></source><extra></extra></detail><detail><name>App</name><value>cpe:/a:phpmyadmin:phpmyadmin</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.900129</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.11971</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.803006</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805371</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.20317</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.12069</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.804489</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805367</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.100023</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.804513</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.103359</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805506</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.900150</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.18015</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.100060</name><description></description></source><extra></extra></detail><detail><name>App</name><value>cpe:/a:openbsd:openssh:6.6.1</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.10267</name><description></description></source><extra></extra></detail><detail><name>cpe:/a:openbsd:openssh:6.6.1</name><value>22/tcp</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.10267</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805131</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.103496</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.902472</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.100173</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805356</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.802411</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.100052</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.103922</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.105211</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.80070</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.16387</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.902935</name><description></description></source><extra></extra></detail><detail><name>OS</name><value>cpe:/o:linux:kernel</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.102002</name><description>Detects remote operating system version</description></source><extra></extra></detail><detail><name>OS</name><value>Linux Kernel</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.102002</name><description>Detects remote operating system version</description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.14362</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.105239</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805581</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.1067610960</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.803181</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.103902</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.802090</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805355</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.801939</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805040</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.902465</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805159</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805291</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805374</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805296</name><description></description></source><extra></extra></detail><detail><name>App</name><value>cpe:/a:apple:cups:1.5:4</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.900348</name><description></description></source><extra></extra></detail><detail><name>cpe:/a:apple:cups:1.5:4</name><value>/</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.900348</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.105230</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805648</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805647</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805365</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.103650</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805140</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.100089</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.900402</name><description></description></source><extra></extra></detail><detail><name>App</name><value>cpe:/a:apache:http_server</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.900498</name><description></description></source><extra></extra></detail><detail><name>cpe:/a:apache:http_server</name><value>8080/tcp</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.900498</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.100070</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.100088</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.111022</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.14224</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.10355</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805348</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.105082</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.11229</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.15716</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.16168</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.804789</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.103114</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805397</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.105049</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.103172</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.100040</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805070</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805158</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805130</name><description></description></source><extra></extra></detail><detail><name>traceroute</name><value>127.0.0.1</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.51662</name><description>Traceroute</description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805665</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.902462</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805600</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.804779</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.14298</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.16227</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.14299</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805388</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805175</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805352</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805346</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.105278</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.804491</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.802967</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805710</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.80083</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.103882</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.105186</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805203</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805415</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.103623</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.105925</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.100072</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.801971</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805495</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805353</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805321</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805119</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.11720</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805592</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.101008</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805235</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.100246</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.103482</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805713</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.14300</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.100022</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.105345</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805564</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805262</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.803195</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.804654</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.103853</name><description></description></source><extra></extra></detail><detail><name>hostname</name><value>localhost</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.103996</name><description>Gather hardware related information</description></source><extra></extra></detail><detail><name>DNS-via-TargetDefinition</name><value>localhost</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.103996</name><description>Gather hardware related information</description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805152</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805192</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.105052</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.802258</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805292</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.805565</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.16389</name><description></description></source><extra></extra></detail><detail><name>EXIT_CODE</name><value>EXIT_NOTVULN</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.10678</name><description></description></source><extra></extra></detail><detail><name>App</name><value>cpe:/a:oracle:mysql:5.6.25</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.100152</name><description></description></source><extra></extra></detail><detail><name>cpe:/a:oracle:mysql:5.6.25</name><value>3306/tcp</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.100152</name><description></description></source><extra></extra></detail><detail><name>best_os_cpe</name><value>cpe:/o:linux:kernel</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.102002</name><description>Detects remote operating system version</description></source><extra></extra></detail><detail><name>best_os_txt</name><value>Linux Kernel</value><source><type>nvt</type><name>1.3.6.1.4.1.25623.1.0.102002</name><description>Detects remote operating system version</description></source><extra></extra></detail></host><host_start>2015-10-20T14:42:29Z<host>127.0.0.1</host></host_start><host_end>2015-10-20T15:01:37Z<host>127.0.0.1</host></host_end><scan_end>2015-10-20T15:01:37Z</scan_end><errors><count>2</count><error><host>127.0.0.1</host><port>general/tcp</port><description>Failed to get phpMyAdmin Http Port</description><nvt oid="1.3.6.1.4.1.25623.1.0.805307"><name>phpMyAdmin Denial-of-Service Vulnerability -01 Dec14</name><cvss_base>5.0</cvss_base></nvt><scan_nvt_version>$Revision: 1709 $</scan_nvt_version><severity>-3.0</severity></error><error><host>127.0.0.1</host><port>general/tcp</port><description>Failed to get phpMyAdmin Port</description><nvt oid="1.3.6.1.4.1.25623.1.0.805306"><name>phpMyAdmin &apos;url.php&apos; Cross Site Scripting Vulnerability - Dec14</name><cvss_base>4.3</cvss_base></nvt><scan_nvt_version>$Revision: 1626 $</scan_nvt_version><severity>-3.0</severity></error></errors></report></report>
