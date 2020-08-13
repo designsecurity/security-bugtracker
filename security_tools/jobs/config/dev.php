@@ -39,5 +39,6 @@ $CONF_SSLSCAN_BIN = '/home/eric/Téléchargements/ssllabs-scan/ssllabs-scan';
 $CONF_ARACHNI_BIN = '/home/eric/arachni-2.0dev-1.0dev/bin/arachni';
 $CONF_ARACHNI_REPORT_BIN = '/home/eric/arachni-2.0dev-1.0dev/bin/arachni_reporter';
 $CONF_DEPENDENCYCHECK_BIN = '/usr/local/dependency-check/bin/dependency-check.sh';
+$CONF_SUBLIST3R_BIN = 'python3 /home/eric/dev/perso/Sublist3r/sublist3r.py';
 $CONF_ZAP_PROXY_ADDRESS = 'tcp://localhost:8080';
 $CONF_ZAP_API_KEY = 's1s4659fs4qduib9hohcj03iie';

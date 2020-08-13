@@ -14,19 +14,38 @@ include('assets.api.php');
 $credentials = array('login' => $CONF_WEBISSUES_OPENVAS_LOGIN, 'password' => $CONF_WEBISSUES_OPENVAS_PASSWORD);
 $clientsoap = new SoapClient($CONF_WEBISSUES_WS_ENDPOINT."?wsdl", $credentials);
 
-if ($argc > 1) {
+/*
+run_openvas.php ips/hostnames int_foldertoputscans 
+run_openvas.php ips/hostnames global <= from config file
+run_openvas.php ips/hostnames <= create new projects/folders
+*/
+
+$ids_folder_scans = array();
+
+if ($argc > 2) {
     echo "argv0 ".htmlentities($argv[0]);
     echo "argv1 ".htmlentities($argv[1]);
+    echo "argv2 ".htmlentities($argv[2]);
 
-    if (is_int($argv[1])) {
-        $ids_folder_scans = array((int) $argv[1]);
-    } elseif ($argv[1] == "global") {
+    if (is_int($argv[2])) {
+        $ids_folder_scans = array((int) $argv[2]);
+    } elseif ($argv[2] == "global") {
         $ids_folder_scans = array($CONF_WEBISSUES_FOLDER_SCANS);
     }
   
-    add_assets_servers();
-} else {
-    $ids_folder_scans = add_projects_with_assets_servers();
+    if($argv[1] == "ips") {
+      add_assets_servers();
+    }
+    else if($argv[1] == "hostnames") {
+      add_assets_urls();
+    }
+} else if($argc > 1) {
+    if($argv[1] == "ips") {
+      $ids_folder_scans = add_projects_with_assets("ips");
+    }
+    else if($argv[1] == "hostnames") {
+      $ids_folder_scans = add_projects_with_assets("hostnames");
+    }
 }
 
 foreach ($ids_folder_scans as $id_folder_scans) {
@@ -35,7 +54,7 @@ foreach ($ids_folder_scans as $id_folder_scans) {
     $addscan->name = "scan_".rand()."_openvas_".$id_folder_scans;
     $addscan->description = "scan_".rand()."_openvas_".$id_folder_scans;
     $addscan->tool = "openvas";
-    $addscan->filter = "medium";
+    $addscan->filter = "info";
 
     $param = new SoapParam($addscan, 'tns:type_addscan');
     $result = $clientsoap->__call('addscan', array('type_addscan'=>$param));

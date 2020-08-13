@@ -110,10 +110,6 @@ class SecurityPluginCommon
             //throw new SoapFault("Server", "System_Api_Error $ex");
         }
 
-        if (count($targets) == 0) {
-            throw new SoapFault("Server", $GLOBALS['ZERO_TARGETS']);
-        }
-
         return $targets;
     }
 

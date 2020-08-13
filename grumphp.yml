@@ -5,6 +5,8 @@ grumphp:
         standard: PSR2
         metadata:
           priority: 300
+        report: full
+        exclude: ["PSR1.Methods.CamelCapsMethodName", "PSR1.Classes.ClassDeclaration", "Squiz.Classes.ValidClassName"]
         
       progpilot:
         config_file: progpilot.yml

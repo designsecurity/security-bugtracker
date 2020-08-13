@@ -44,7 +44,7 @@ class OpenvasApi
             $cmd = "sudo -u gvm $openvasomp --gmp-username $openvaslogin --gmp-password $openvaspwd";
             $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
             $cmd .= " --xml='<create_target><name>webissue$issueId</name>";
-            $cmd .= "<hosts>".$req["target"]."</hosts></create_target>'";
+            $cmd .= "<hosts>".$req["target"]."</hosts><alive_tests>Consider Alive</alive_tests></create_target>'";
             $output = shell_exec($cmd);
             
             preg_match('|<create_target_response .* id=\"([^"]*)\"|', $output, $matches);

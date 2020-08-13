@@ -240,31 +240,71 @@ class SecurityPluginApi extends System_Api_Base
 
         switch ($req["tool"]) {
             case "openvas":
-                $targets = SecurityPluginCommon::findTargets($req, "dynamic");
+                $targetsweb = SecurityPluginCommon::findTargets($req, "web");
+                $targetsservers = SecurityPluginCommon::findTargets($req, "servers");
+                $targets = array_merge($targetsweb, $targetsservers);
+                
+                if (count($targets) == 0) {
+                    throw new SoapFault("Server", $GLOBALS['ZERO_TARGETS']);
+                }
+                
+                var_dump($targetsweb);
+                var_dump($targetsservers);
+                var_dump($targets);
                 $issueId = SecurityPluginCommon::runOpenvas($req, $targets);
                 break;
             case "dependency-check":
                 $targets = SecurityPluginCommon::findTargets($req, "static");
+                
+                if (count($targets) == 0) {
+                    throw new SoapFault("Server", $GLOBALS['ZERO_TARGETS']);
+                }
+                
                 $issueId = SecurityPluginCommon::runDependencycheck($req, $targets);
                 break;
             case "arachni":
                 $targets = SecurityPluginCommon::findTargets($req, "web");
+                
+                if (count($targets) == 0) {
+                    throw new SoapFault("Server", $GLOBALS['ZERO_TARGETS']);
+                }
+                
                 $issueId = SecurityPluginCommon::runArachni($req, $targets);
                 break;
             case "sslscan":
                 $targets = SecurityPluginCommon::findTargets($req, "web");
+                
+                if (count($targets) == 0) {
+                    throw new SoapFault("Server", $GLOBALS['ZERO_TARGETS']);
+                }
+                
                 $issueId = SecurityPluginCommon::runSslscan($req, $targets);
                 break;
             case "zap":
                 $targets = SecurityPluginCommon::findTargets($req, "web");
+                
+                if (count($targets) == 0) {
+                    throw new SoapFault("Server", $GLOBALS['ZERO_TARGETS']);
+                }
+                
                 $issueId = SecurityPluginCommon::runZap($req, $targets);
                 break;
             case "openscat":
                 $targets = SecurityPluginCommon::findTargets($req, "static");
+                
+                if (count($targets) == 0) {
+                    throw new SoapFault("Server", $GLOBALS['ZERO_TARGETS']);
+                }
+                
                 //SecurityPluginCommon::run_openscat();
                 break;
             case "sonar":
                 $targets = SecurityPluginCommon::findTargets($req, "static");
+                
+                if (count($targets) == 0) {
+                    throw new SoapFault("Server", $GLOBALS['ZERO_TARGETS']);
+                }
+                
                 $issueId = SecurityPluginCommon::runSonar($req, $targets);
                 break;
         }
@@ -328,10 +368,9 @@ class SecurityPluginApi extends System_Api_Base
             $issueManager = new System_Api_IssueManager();
             $issue = $issueManager->getIssue($req["id_issue"]);
             try {
-              $desc = $issueManager->getDescription($issue);
-              $issueManager->deleteDescription($descr);
-            } catch(System_Api_Error $ex_description) {
-            
+                $desc = $issueManager->getDescription($issue);
+                $issueManager->deleteDescription($descr);
+            } catch (System_Api_Error $ex_description) {
             }
             
             $issueManager->deleteIssue($issue);
@@ -449,10 +488,10 @@ class SecurityPluginApi extends System_Api_Base
             $issueManager->renameIssue($url, $req["name"]);
             
             try {
-              $desc = $issueManager->getDescription($url);
-              $issueManager->editDescription($desc, $req["description"], System_Const::TextWithMarkup);
-            } catch(System_Api_Error $ex_description) {
-              $issueManager->addDescription($url, $req["description"], System_Const::TextWithMarkup);
+                $desc = $issueManager->getDescription($url);
+                $issueManager->editDescription($desc, $req["description"], System_Const::TextWithMarkup);
+            } catch (System_Api_Error $ex_description) {
+                $issueManager->addDescription($url, $req["description"], System_Const::TextWithMarkup);
             }
 
             $attributeurl = $typeManager->getAttributeType($GLOBALS['CONF_ID_ATTRIBUTE_FOLDER_WEB_URL']);
@@ -627,10 +666,10 @@ class SecurityPluginApi extends System_Api_Base
             $issueManager->renameIssue($code, $req["name"]);
             
             try {
-              $desc = $issueManager->getDescription($code);
-              $issueManager->editDescription($desc, $req["description"], System_Const::TextWithMarkup);
-            } catch(System_Api_Error $ex_description) {
-              $issueManager->addDescription($code, $req["description"], System_Const::TextWithMarkup);
+                $desc = $issueManager->getDescription($code);
+                $issueManager->editDescription($desc, $req["description"], System_Const::TextWithMarkup);
+            } catch (System_Api_Error $ex_description) {
+                $issueManager->addDescription($code, $req["description"], System_Const::TextWithMarkup);
             }
 
             $formatterManager = new System_Api_Formatter();
@@ -876,10 +915,10 @@ class SecurityPluginApi extends System_Api_Base
             $issueManager->renameIssue($server, $req["hostname"]);
             
             try {
-              $desc = $issueManager->getDescription($server);
-              $issueManager->editDescription($desc, $req["description"], System_Const::TextWithMarkup);
-            } catch(System_Api_Error $ex_description) {
-              $issueManager->addDescription($server, $req["description"], System_Const::TextWithMarkup);
+                $desc = $issueManager->getDescription($server);
+                $issueManager->editDescription($desc, $req["description"], System_Const::TextWithMarkup);
+            } catch (System_Api_Error $ex_description) {
+                $issueManager->addDescription($server, $req["description"], System_Const::TextWithMarkup);
             }
 
             $formatterManager = new System_Api_Formatter();
@@ -1076,10 +1115,10 @@ class SecurityPluginApi extends System_Api_Base
             $issueManager->renameIssue($issue, $req["name"]);
             
             try {
-              $desc = $issueManager->getDescription($issue);
-              $issueManager->editDescription($desc, $req["description"], System_Const::TextWithMarkup);
-            } catch(System_Api_Error $ex_description) {
-              $issueManager->addDescription($issue, $req["description"], System_Const::TextWithMarkup);
+                $desc = $issueManager->getDescription($issue);
+                $issueManager->editDescription($desc, $req["description"], System_Const::TextWithMarkup);
+            } catch (System_Api_Error $ex_description) {
+                $issueManager->addDescription($issue, $req["description"], System_Const::TextWithMarkup);
             }
             
             $rows = $issueManager->getAllAttributeValuesForIssue($issue);
@@ -1287,29 +1326,25 @@ class SecurityPluginApi extends System_Api_Base
         
             SecurityPluginCommon::logp("here2");
         try {
-          $folders = $projectManager->getFoldersForProject($project);
+            $folders = $projectManager->getFoldersForProject($project);
         } catch (System_Api_Error $ex) {
             throw new SoapFault("Server", "System_Api_Error $ex");
         }
             SecurityPluginCommon::logp("here2après".print_r($folders, true));
-        foreach($folders as $folder) {
+        foreach ($folders as $folder) {
             SecurityPluginCommon::logp("here2 folder");
-            if($folder["type_id"] === $GLOBALS['CONF_ID_TYPE_FOLDER_BUGS']) {
-              $id_folder_bugs = $folder["folder_id"];
+            if ($folder["type_id"] === $GLOBALS['CONF_ID_TYPE_FOLDER_BUGS']) {
+                $id_folder_bugs = $folder["folder_id"];
+            } elseif ($folder["type_id"] === $GLOBALS['CONF_ID_TYPE_FOLDER_SERVERS']) {
+                $id_folder_servers = $folder["folder_id"];
+            } elseif ($folder["type_id"] === $GLOBALS['CONF_ID_TYPE_FOLDER_CODES']) {
+                $id_folder_codes = $folder["folder_id"];
+            } elseif ($folder["type_id"] === $GLOBALS['CONF_ID_TYPE_FOLDER_WEB']) {
+                $id_folder_web = $folder["folder_id"];
+            } elseif ($folder["type_id"] === $GLOBALS['CONF_ID_TYPE_FOLDER_SCANS']) {
+                $id_folder_scans = $folder["folder_id"];
             }
-            else if($folder["type_id"] === $GLOBALS['CONF_ID_TYPE_FOLDER_SERVERS']) {
-              $id_folder_servers = $folder["folder_id"];
-            }
-            else if($folder["type_id"] === $GLOBALS['CONF_ID_TYPE_FOLDER_CODES']) {
-              $id_folder_codes = $folder["folder_id"];
-            }
-            else if($folder["type_id"] === $GLOBALS['CONF_ID_TYPE_FOLDER_WEB']) {
-              $id_folder_web = $folder["folder_id"];
-            }
-            else if($folder["type_id"] === $GLOBALS['CONF_ID_TYPE_FOLDER_SCANS']) {
-              $id_folder_scans = $folder["folder_id"];
-            }
-          }
+        }
           
             SecurityPluginCommon::logp("here2");
         $tab = array(
@@ -1436,4 +1471,3 @@ class SecurityPluginApi extends System_Api_Base
         return $tab;
     }
 }
-

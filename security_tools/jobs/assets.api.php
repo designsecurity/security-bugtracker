@@ -105,8 +105,9 @@ function add_assets_servers()
     }
 }
 
-function add_projects_with_assets_servers()
+function add_projects_with_assets($type = "servers")
 {
+    $addurl = new TypeAddurl();
     $addserver = new TypeAddserver();
     $addproject = new TypeAddproject();
     $getproject = new TypeGetproject();
@@ -118,6 +119,7 @@ function add_projects_with_assets_servers()
         $currentProject = null;
         $currentIdProject = -1;
         $currentIdFolderServers = -1;
+        $currentIdFolderWeb = -1;
         $listOfFolderToScans = array();
     
         while (!feof($fp1) && !feof($fp2) && !feof($fp3)) {
@@ -143,36 +145,34 @@ function add_projects_with_assets_servers()
                     $param = new SoapParam($getproject, 'tns:type_getproject');
                     $result = $GLOBALS["clientsoap"]->__call('getproject', array('type_getproject'=>$param));
                     
-                    if(isset($result->result_getproject_details->id_project) 
+                    if (isset($result->result_getproject_details->id_project)
                       && is_int($result->result_getproject_details->id_project)) {
+                        $currentIdProject = $result->result_getproject_details->id_project;
                       
-                      $currentIdProject = $result->result_getproject_details->id_project;
-                      
-                      if(isset($result->result_getproject_details->id_folder_servers) 
+                        if (isset($result->result_getproject_details->id_folder_servers)
                         && $result->result_getproject_details->id_folder_servers === -1) {
-                        echo "project '".$getproject->name."' exist but not the servers folder\n";
-                      }
-                      else {
-                        $currentIdFolderServers = $result->result_getproject_details->id_folder_servers;
-                      }
+                            echo "project '".$getproject->name."' exist but not the servers folder\n";
+                        } else {
+                            $currentIdFolderServers = $result->result_getproject_details->id_folder_servers;
+                            $currentIdFolderWeb = $result->result_getproject_details->id_folder_web;
+                        }
                       
-                      if(isset($result->result_getproject_details->id_folder_scans) 
+                        if (isset($result->result_getproject_details->id_folder_scans)
                         && $result->result_getproject_details->id_folder_scans === -1) {
-                        echo "project '".$getproject->name."' exist but not the scans folder\n";
-                      }
-                      else {
-                        array_push($listOfFolderToScans, $result->result_getproject_details->id_folder_scans);
-                      }
-                    }
-                    else {
-                      $param = new SoapParam($addproject, 'tns:type_addproject');
-                      $result = $GLOBALS["clientsoap"]->__call('addproject', array('type_addproject'=>$param));
+                            echo "project '".$getproject->name."' exist but not the scans folder\n";
+                        } else {
+                            array_push($listOfFolderToScans, $result->result_getproject_details->id_folder_scans);
+                        }
+                    } else {
+                        $param = new SoapParam($addproject, 'tns:type_addproject');
+                        $result = $GLOBALS["clientsoap"]->__call('addproject', array('type_addproject'=>$param));
             
-                      var_dump($result);
+                        var_dump($result);
             
-                      $currentIdProject = $result->id_details->id_project;
-                      $currentIdFolderServers = $result->id_details->id_folder_servers;
-                      array_push($listOfFolderToScans, $result->id_details->id_folder_scans);
+                        $currentIdProject = $result->id_details->id_project;
+                        $currentIdFolderServers = $result->id_details->id_folder_servers;
+                        $currentIdFolderWeb = $result->id_details->id_folder_web;
+                        array_push($listOfFolderToScans, $result->id_details->id_folder_scans);
                     }
                     
           
@@ -183,22 +183,37 @@ function add_projects_with_assets_servers()
             }
 
             echo "'".htmlentities($currentIdFolderServers)."'\n";
+            echo "'".htmlentities($currentIdFolderWeb)."'\n";
             echo "'".htmlentities($hostname)."'\n";
             echo "'".htmlentities($ips)."'\n";
             
-            if($currentIdFolderServers !== -1) {
-              $addserver->id_folder_servers = $currentIdFolderServers;
-              $addserver->hostname = $hostname;
-              $addserver->description = $hostname;
-              $addserver->use = "Production";
-              $addserver->ipsaddress = $ips;
+            if ($currentIdFolderServers !== -1 && $type === "ips") {
+                $addserver->id_folder_servers = $currentIdFolderServers;
+                $addserver->hostname = $hostname;
+                $addserver->description = $hostname;
+                $addserver->use = "Production";
+                $addserver->ipsaddress = $ips;
 
-              try {
-                  $param = new SoapParam($addserver, 'tns:type_addserver');
-                  $result = $GLOBALS["clientsoap"]->__call('addserver', array('type_addserver'=>$param));
-              } catch (SoapFault $e) {
-                  echo $e->getMessage()."\n";
-              }
+                try {
+                    $param = new SoapParam($addserver, 'tns:type_addserver');
+                    $result = $GLOBALS["clientsoap"]->__call('addserver', array('type_addserver'=>$param));
+                } catch (SoapFault $e) {
+                    echo $e->getMessage()."\n";
+                }
+            }
+            
+            else if ($currentIdFolderWeb !== -1 && $type === "hostnames") {
+                $addurl->id_folder_web = $currentIdFolderWeb;
+                $addurl->name = $hostname;
+                $addurl->description = $hostname;
+                $addurl->url = $hostname;
+
+                try {
+                    $param = new SoapParam($addserver, 'tns:type_addurl');
+                    $result = $GLOBALS["clientsoap"]->__call('addurl', array('type_addurl'=>$param));
+                } catch (SoapFault $e) {
+                    echo $e->getMessage()."\n";
+                }
             }
         }
 

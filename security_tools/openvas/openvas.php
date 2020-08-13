@@ -18,7 +18,7 @@ if (isset($_GET["alertscanid"])) {
     $alertscanid = (int) $_GET["alertscanid"];
 }
 
-// http://localhost:81/webissues-server-2.0.0/client/security_tools/openvas/openvas.php?alertscanid=789
+// http://localhost:81/webissues-server-2.0.0/client/security_tools/openvas/openvas.php?alertscanid=10512
 
 if (!empty($alertscanid)) {
     $getparamsfromalertid = new TypeGetparamsfromalertid();
