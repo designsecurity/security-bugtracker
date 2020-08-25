@@ -1,6 +1,7 @@
 webissues-server-2.0.0/client/securityplugin.log
 webissues-server-2.0.0/client/webservices.log
 security_tools/jobs/config/prod.php
+security_tools/jobs/tmp/output.txts
 security_tools/openvas/openvas.log
 vendor/
 composer.lock

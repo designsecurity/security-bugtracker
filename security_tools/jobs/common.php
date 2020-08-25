@@ -10,6 +10,8 @@ include(__DIR__.'/types/TypeAddurl.php');
 include(__DIR__.'/types/TypeGetcodes.php');
 include(__DIR__.'/types/TypeGeturls.php');
 include(__DIR__.'/types/TypeGetproject.php');
+include(__DIR__.'/types/TypeFinishscan.php');
 
 ini_set('default_socket_timeout', 600);
 ini_set('soap.wsdl_cache_enabled', 0);
+ini_set('soap.wsdl_cache_ttl', 0);

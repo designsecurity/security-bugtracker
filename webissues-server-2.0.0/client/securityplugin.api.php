@@ -238,6 +238,7 @@ class SecurityPluginApi extends System_Api_Base
             throw new SoapFault("Server", $GLOBALS['DUPLICATE_OBJECT']);
         }
 
+            SecurityPluginCommon::logp("aaa1");
         switch ($req["tool"]) {
             case "openvas":
                 $targetsweb = SecurityPluginCommon::findTargets($req, "web");
@@ -299,13 +300,18 @@ class SecurityPluginApi extends System_Api_Base
                 //SecurityPluginCommon::run_openscat();
                 break;
             case "sonar":
+            SecurityPluginCommon::logp("aaa2");
                 $targets = SecurityPluginCommon::findTargets($req, "static");
                 
+            SecurityPluginCommon::logp("aaa3");
                 if (count($targets) == 0) {
+            SecurityPluginCommon::logp("aaa4");
                     throw new SoapFault("Server", $GLOBALS['ZERO_TARGETS']);
                 }
                 
+            SecurityPluginCommon::logp("aaa5");
                 $issueId = SecurityPluginCommon::runSonar($req, $targets);
+            SecurityPluginCommon::logp("aaa issueId = ".$issueId);
                 break;
         }
 
@@ -435,8 +441,8 @@ class SecurityPluginApi extends System_Api_Base
             $issueManager->addDescription($issue, $req["description"], System_Const::TextWithMarkup);
 
             $attributeurl = $typeManager->getAttributeType($GLOBALS['CONF_ID_ATTRIBUTE_FOLDER_WEB_URL']);
-            $valuetime = $formatterManager->convertAttributeValue($attributeurl["attr_def"], $req["url"]);
-            $issueManager->setValue($issue, $attributeurl, $value);
+            $valueurl = $formatterManager->convertAttributeValue($attributeurl["attr_def"], $req["url"]);
+            $issueManager->setValue($issue, $attributeurl, $valueurl);
         } catch (System_Api_Error $ex) {
             SecurityPluginCommon::logp($ex);
             throw new SoapFault("Server", "System_Api_Error $ex");

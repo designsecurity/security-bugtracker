@@ -200,16 +200,14 @@ function add_projects_with_assets($type = "servers")
                 } catch (SoapFault $e) {
                     echo $e->getMessage()."\n";
                 }
-            }
-            
-            else if ($currentIdFolderWeb !== -1 && $type === "hostnames") {
+            } elseif ($currentIdFolderWeb !== -1 && $type === "hostnames") {
                 $addurl->id_folder_web = $currentIdFolderWeb;
                 $addurl->name = $hostname;
                 $addurl->description = $hostname;
                 $addurl->url = $hostname;
 
                 try {
-                    $param = new SoapParam($addserver, 'tns:type_addurl');
+                    $param = new SoapParam($addurl, 'tns:type_addurl');
                     $result = $GLOBALS["clientsoap"]->__call('addurl', array('type_addurl'=>$param));
                 } catch (SoapFault $e) {
                     echo $e->getMessage()."\n";

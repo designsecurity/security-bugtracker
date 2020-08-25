@@ -69,14 +69,18 @@ class SecurityPluginCommon
             $issueManager = new System_Api_IssueManager();
             $projectManager = new System_Api_ProjectManager();
 
-            $id_type = $GLOBALS['CONF_ID_TYPE_FOLDER_SERVERS'];
-            $id_attribute = $GLOBALS['CONF_ID_ATTRIBUTE_FOLDER_SERVERS_IPSADDRESS'];
+            // servers
+            $id_type = -1;
+            $id_attribute = -1;
             if ($type == "static") {
                 $id_type = $GLOBALS['CONF_ID_TYPE_FOLDER_CODES'];
                 $id_attribute = $GLOBALS['CONF_ID_ATTRIBUTE_FOLDER_CODES_PATH'];
             } elseif ($type == "web") {
                 $id_type = $GLOBALS['CONF_ID_TYPE_FOLDER_WEB'];
                 $id_attribute = $GLOBALS['CONF_ID_ATTRIBUTE_FOLDER_WEB_URL'];
+            } elseif ($type == "servers") {
+              $id_type = $GLOBALS['CONF_ID_TYPE_FOLDER_SERVERS'];
+              $id_attribute = $GLOBALS['CONF_ID_ATTRIBUTE_FOLDER_SERVERS_IPSADDRESS'];
             }
 
             $folderscan = $projectManager->getFolder($req["id_folder_scans"]);
@@ -91,6 +95,7 @@ class SecurityPluginCommon
                 }
             }
 
+            SecurityPluginCommon::logp("TEST".$id_folder_targets);
             if ($id_folder_targets > 0) {
                 $nbtargets = 0;
                 $foldertargets = $projectManager->getFolder($id_folder_targets);
@@ -109,44 +114,59 @@ class SecurityPluginCommon
             SecurityPluginCommon::logp($ex);
             //throw new SoapFault("Server", "System_Api_Error $ex");
         }
+            SecurityPluginCommon::logp("TEST".print_r($targets, true));
 
         return $targets;
     }
 
     public static function commonScan($req)
     {
+      
+            SecurityPluginCommon::logp("commonScan 1");
         $issueManager = new System_Api_IssueManager();
         $projectManager = new System_Api_ProjectManager();
         $typeManager = new System_Api_TypeManager();
         $formatterManager = new System_Api_Formatter();
       
+            SecurityPluginCommon::logp("commonScan 2");
         try {
             if (empty($req["time"])) {
                 $req["time"] = "stopped";
             }
 
+            SecurityPluginCommon::logp("commonScan 3");
             $folderscan = $projectManager->getFolder($req["id_folder_scans"]);
             $issueId = $issueManager->addIssue($folderscan, $req["name"], null);
             $issue = $issueManager->getIssue($issueId);
             $issueManager->addDescription($issue, $req["description"], System_Const::TextWithMarkup);
             
+
+            SecurityPluginCommon::logp("commonScan 4");
             $attributetime = $typeManager->getAttributeType($GLOBALS['CONF_ID_ATTRIBUTE_FOLDER_SCANS_TIME']);
+            /*
+            SecurityPluginCommon::logp("commonScan 4 <<<<");
             $valuetime = $formatterManager->convertAttributeValue($attributetime[ 'attr_def' ], $req["time"]);
 
+            SecurityPluginCommon::logp("commonScan 4 bis");
             $attributetool = $typeManager->getAttributeType($GLOBALS['CONF_ID_ATTRIBUTE_FOLDER_SCANS_TOOL']);
             $valuetool = $formatterManager->convertAttributeValue($attributetool[ 'attr_def' ], $req["tool"]);
 
+            SecurityPluginCommon::logp("commonScan 4 bis bis");
             $attributeseve = $typeManager->getAttributeType($GLOBALS['CONF_ID_ATTRIBUTE_FOLDER_SCANS_SEVERITY']);
             $valueseve = $formatterManager->convertAttributeValue($attributeseve[ 'attr_def' ], $req["filter"]);
 
+            SecurityPluginCommon::logp("commonScan 5");
             $issueManager->setValue($issue, $attributetime, $valuetime);
             $issueManager->setValue($issue, $attributetool, $valuetool);
             $issueManager->setValue($issue, $attributeseve, $valueseve);
+            */
+            SecurityPluginCommon::logp("commonScan 6");
         } catch (System_Api_Error $ex) {
             SecurityPluginCommon::logp($ex);
             throw new SoapFault("Server", "System_Api_Error $ex");
         }
 
+            SecurityPluginCommon::logp("commonScan 7 = ".$issueId);
         return $issueId;
     }
 
@@ -235,7 +255,7 @@ class SecurityPluginCommon
 
     public static function validUrl($url)
     {
-        if (filter_var($url, FILTER_VALIDATE_URL)) {
+        if (filter_var($url, FILTER_VALIDATE_URL) || filter_var($url, FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)) {
             return true;
         }
 

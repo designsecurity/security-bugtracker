@@ -61,7 +61,7 @@ if (!empty($alertscanid)) {
     $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
     $cmd .= " --xml='<get_reports report_id=\"$id_report\" format_id=\"$idpdf\" details=\"1\" />'";
     $outputpdf = urlencode(shell_exec($cmd));
-
+/*
     $cmd = "sudo -u gvm $openvasomp --gmp-username $openvaslogin --gmp-password $openvaspwd";
     $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
     $cmd .= " --xml='<delete_target target_id=\"$id_target\"/>'";
@@ -81,7 +81,7 @@ if (!empty($alertscanid)) {
     $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
     $cmd .= " --xml='<delete_report report_id=\"$id_report\"/>'";
     $output = shell_exec($cmd);
-
+*/
     if (!empty($outputxml)) {
         $report = new SimpleXMLElement($outputxml);
   

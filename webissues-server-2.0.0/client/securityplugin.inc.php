@@ -11,9 +11,7 @@ class Client_SecurityPlugin extends System_Web_Component
 {
     protected function __construct()
     {
-        $this->logp("Client_SecurityPlugin 1");
         parent::__construct();
-        $this->logp("Client_SecurityPlugin 2");
     }
 
     private function logp($ex)
@@ -25,7 +23,6 @@ class Client_SecurityPlugin extends System_Web_Component
 
     protected function execute()
     {
-        $this->logp("here 0000");
         $this->view->setDecoratorClass('Common_Window');
         $this->view->setSlot('page_title', $this->t('Security Plugin Configuration'));
 
@@ -40,8 +37,8 @@ class Client_SecurityPlugin extends System_Web_Component
 
         if ($this->install_security == "yes") {
             $this->form = new System_Web_Form('installation', $this);
-            $this->form->addField('openvas_ws_login', "admin");
-            $this->form->addField('openvas_ws_password', "");
+            $this->form->addField('openvas_ws_login', "test");
+            $this->form->addField('openvas_ws_password', "test");
             $this->form->addField('openvas_ws_endpoint', "");
 
             if ($this->form->loadForm()) {
@@ -385,36 +382,23 @@ class Client_SecurityPlugin extends System_Web_Component
                 }
             }
         } elseif ($this->install_security == "no") {
-            $this->logp("uninstall 1=".$CONF_ID_TYPE_FOLDER_SERVERS);
             $type_folder_servers = $typeManager->getIssueType($CONF_ID_TYPE_FOLDER_SERVERS);
-            $this->logp("uninstall 1b");
             $type_folder_codes = $typeManager->getIssueType($CONF_ID_TYPE_FOLDER_CODES);
             $type_folder_web = $typeManager->getIssueType($CONF_ID_TYPE_FOLDER_WEB);
             $type_folder_scans = $typeManager->getIssueType($CONF_ID_TYPE_FOLDER_SCANS);
             $type_folder_bugs = $typeManager->getIssueType($CONF_ID_TYPE_FOLDER_BUGS);
 
-            $this->logp("uninstall 2");
             $folders = $projectManager->getFoldersByIssueType($type_folder_servers);
-            $this->logp("uninstall 2 b");
             foreach ($folders as $folder) {
-                $this->logp("uninstall 2 b loop 1");
                 $issues = CommonSecurityPlugin::getIssues($folder);
-                $this->logp("uninstall 2 b loop 2");
                 foreach ($issues as $issue) {
-                    $this->logp("uninstall 2 b loop 2 loop 1");
                     $desc = $issueManager->getDescription($issue);
-                    $this->logp("uninstall 2 b loop 2 loop 2");
                     $issueManager->deleteIssue($issue);
-                    $this->logp("uninstall 2 b loop 2 loop 3");
                     $issueManager->deleteDescription($descr);
-                    $this->logp("uninstall 2 b loop 2 loop 4");
                 }
 
                 $projectManager->deleteFolder($folder);
-                $this->logp("uninstall 2 b loop 3");
             }
-
-            $this->logp("uninstall 3");
 
             $folders = $projectManager->getFoldersByIssueType($type_folder_codes);
             foreach ($folders as $folder) {
@@ -428,8 +412,6 @@ class Client_SecurityPlugin extends System_Web_Component
                 $projectManager->deleteFolder($folder);
             }
 
-            $this->logp("uninstall 4");
-
             $folders = $projectManager->getFoldersByIssueType($type_folder_web);
             foreach ($folders as $folder) {
                 $issues = CommonSecurityPlugin::getIssues($folder);
@@ -442,8 +424,6 @@ class Client_SecurityPlugin extends System_Web_Component
                 $projectManager->deleteFolder($folder);
             }
 
-            $this->logp("uninstall 5");
-
             $folders = $projectManager->getFoldersByIssueType($type_folder_scans);
             foreach ($folders as $folder) {
                 $issues = CommonSecurityPlugin::getIssues($folder);
@@ -452,11 +432,9 @@ class Client_SecurityPlugin extends System_Web_Component
                     $issueManager->deleteIssue($issue);
                     $issueManager->deleteDescription($descr);
                 }
-                //
+                
                 $projectManager->deleteFolder($folder);
             }
-
-            $this->logp("uninstall 6");
 
             $folders = $projectManager->getFoldersByIssueType($type_folder_bugs);
             foreach ($folders as $folder) {
@@ -466,11 +444,9 @@ class Client_SecurityPlugin extends System_Web_Component
                     $issueManager->deleteIssue($issue);
                     $issueManager->deleteDescription($descr);
                 }
-                //
+                
                 $projectManager->deleteFolder($folder);
             }
-
-            $this->logp("uninstall 7");
         
             $attributes_servers = $typeManager->getAttributeTypesForIssueType($type_folder_servers);
             foreach ($attributes_servers as $attribute) {
@@ -494,7 +470,10 @@ class Client_SecurityPlugin extends System_Web_Component
 
             $attributes_bugs = $typeManager->getAttributeTypesForIssueType($type_folder_bugs);
             foreach ($attributes_bugs as $attribute) {
-                $typeManager->deleteAttributeType($attribute);
+            
+                if($attribute[ 'attr_id' ] > 10) {
+                  $typeManager->deleteAttributeType($attribute);
+                }
             }
 
             $typeManager->deleteIssueType($type_folder_servers, System_Api_TypeManager::ForceDelete);

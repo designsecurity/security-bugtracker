@@ -41,9 +41,22 @@ if [ "security-plugin" = "$1" ]; then
       echo "$2 doesn't seem a webissues 2 directory (looking for $WEBISSUESCOMMON folder)"
       exit 1
     fi
+    
+    WEBISSUESWEB="${2}/system/web/"
+    if [ -d $WEBISSUESWEB ]; then
+      if [ ! -w $WEBISSUESWEB ]; then
+        echo "Can't write into WEBISSUESWEB directory"
+        exit 1
+      fi
+      
+      cp ./webissues-server-2.0.0/system/web/* $WEBISSUESWEB
+    else
+      echo "$2 doesn't seem a webissues 2 directory (looking for $WEBISSUESWEB folder)"
+      exit 1
+    fi
 
     echo "security-plugin correctly installed!"
-    echo "go to http://localhost:/webissues-server-2.0.0/client/securityplugin.php to configure security-plugin"
+    echo "go to http://localhost/webissues-server-2.0.0/client/securityplugin.php to configure security-plugin"
     
   else
     echo "$2 directory doesn't exist"
@@ -56,7 +69,7 @@ elif [ "openvas-services" = "$1" ]; then
       exit 1
     fi
 
-    cp -r ./security_tools/openvas/ $2
+    cp -r ./security_tools/openvas/* $2
     echo "openvas-services correctly installed!"
   else
     echo "$2 directory doesn't exist"

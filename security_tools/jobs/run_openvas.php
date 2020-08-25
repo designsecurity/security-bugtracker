@@ -15,7 +15,7 @@ $credentials = array('login' => $CONF_WEBISSUES_OPENVAS_LOGIN, 'password' => $CO
 $clientsoap = new SoapClient($CONF_WEBISSUES_WS_ENDPOINT."?wsdl", $credentials);
 
 /*
-run_openvas.php ips/hostnames int_foldertoputscans 
+run_openvas.php ips/hostnames int_foldertoputscans
 run_openvas.php ips/hostnames global <= from config file
 run_openvas.php ips/hostnames <= create new projects/folders
 */
@@ -33,18 +33,16 @@ if ($argc > 2) {
         $ids_folder_scans = array($CONF_WEBISSUES_FOLDER_SCANS);
     }
   
-    if($argv[1] == "ips") {
-      add_assets_servers();
+    if ($argv[1] == "ips") {
+        add_assets_servers();
+    } elseif ($argv[1] == "hostnames") {
+        add_assets_urls();
     }
-    else if($argv[1] == "hostnames") {
-      add_assets_urls();
-    }
-} else if($argc > 1) {
-    if($argv[1] == "ips") {
-      $ids_folder_scans = add_projects_with_assets("ips");
-    }
-    else if($argv[1] == "hostnames") {
-      $ids_folder_scans = add_projects_with_assets("hostnames");
+} elseif ($argc > 1) {
+    if ($argv[1] == "ips") {
+        $ids_folder_scans = add_projects_with_assets("ips");
+    } elseif ($argv[1] == "hostnames") {
+        $ids_folder_scans = add_projects_with_assets("hostnames");
     }
 }
 
