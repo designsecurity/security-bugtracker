@@ -300,18 +300,18 @@ class SecurityPluginApi extends System_Api_Base
                 //SecurityPluginCommon::run_openscat();
                 break;
             case "sonar":
-            SecurityPluginCommon::logp("aaa2");
+                SecurityPluginCommon::logp("aaa2");
                 $targets = SecurityPluginCommon::findTargets($req, "static");
                 
-            SecurityPluginCommon::logp("aaa3");
+                SecurityPluginCommon::logp("aaa3");
                 if (count($targets) == 0) {
-            SecurityPluginCommon::logp("aaa4");
+                    SecurityPluginCommon::logp("aaa4");
                     throw new SoapFault("Server", $GLOBALS['ZERO_TARGETS']);
                 }
                 
-            SecurityPluginCommon::logp("aaa5");
+                SecurityPluginCommon::logp("aaa5");
                 $issueId = SecurityPluginCommon::runSonar($req, $targets);
-            SecurityPluginCommon::logp("aaa issueId = ".$issueId);
+                SecurityPluginCommon::logp("aaa issueId = ".$issueId);
                 break;
         }
 

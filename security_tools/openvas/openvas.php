@@ -66,17 +66,17 @@ if (!empty($alertscanid)) {
     $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
     $cmd .= " --xml='<delete_target target_id=\"$id_target\"/>'";
     $output = shell_exec($cmd);
-    
+
     $cmd = "sudo -u gvm $openvasomp --gmp-username $openvaslogin --gmp-password $openvaspwd";
     $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
     $cmd .= " --xml='<delete_alert alert_id=\"$id_alert\"/>'";
     $output = shell_exec($cmd);
-    
+
     $cmd = "sudo -u gvm $openvasomp --gmp-username $openvaslogin --gmp-password $openvaspwd";
     $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
     $cmd .= " --xml='<delete_task task_id=\"$id_task\"/>'";
     $output = shell_exec($cmd);
-    
+
     $cmd = "sudo -u gvm $openvasomp --gmp-username $openvaslogin --gmp-password $openvaspwd";
     $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
     $cmd .= " --xml='<delete_report report_id=\"$id_report\"/>'";

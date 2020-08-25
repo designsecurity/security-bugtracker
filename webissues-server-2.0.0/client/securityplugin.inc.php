@@ -470,9 +470,8 @@ class Client_SecurityPlugin extends System_Web_Component
 
             $attributes_bugs = $typeManager->getAttributeTypesForIssueType($type_folder_bugs);
             foreach ($attributes_bugs as $attribute) {
-            
-                if($attribute[ 'attr_id' ] > 10) {
-                  $typeManager->deleteAttributeType($attribute);
+                if ($attribute[ 'attr_id' ] > 10) {
+                    $typeManager->deleteAttributeType($attribute);
                 }
             }
 

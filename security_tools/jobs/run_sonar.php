@@ -11,7 +11,7 @@
 include('common.php');
 include('assets.api.php');
 
-$credentials = array('login' => $CONF_WEBISSUES_SONAR_LOGIN, 'password' => $CONF_WEBISSUES_SONAR_PASSWORD, 'cache_wsdl' => WSDL_CACHE_NONE, 'trace' => true,'exceptions' => true, 'classmap' => array('type_addscan' => "TypeAddscan"));
+$credentials = array('login' => $CONF_WEBISSUES_SONAR_LOGIN, 'password' => $CONF_WEBISSUES_SONAR_PASSWORD);
 $clientsoap = new SoapClient($CONF_WEBISSUES_WS_ENDPOINT."?wsdl", $credentials);
 
 //add_assets_codes();
@@ -36,15 +36,13 @@ if ($result) {
     $results = $clientsoap->__call('getcodes', array('type_getcodes'=>$param));
     
     if ($results) {
-    
         if (is_array($results->result_getcodes_details) && count($results->result_getcodes_details) > 1) {
             $results = $results->result_getcodes_details;
         }
 
         foreach ($results as $resultcode) {
-        
-        var_dump($results);
-        var_dump($resultcode);
+            var_dump($results);
+            var_dump($resultcode);
         
                $id_code = $resultcode->id_code;
                $name = $resultcode->name;
@@ -53,7 +51,7 @@ if ($result) {
               
               preg_match('|github.com/(.*)/(.*)(\.git)?|', $code, $matches);
               
-              if(isset($matches[1]) && isset($matches[2])) {
+            if (isset($matches[1]) && isset($matches[2])) {
                 $org = $matches[1];
                 $repo = $matches[2];
                 
@@ -62,76 +60,76 @@ if ($result) {
                 $out = shell_exec("git clone $code");
                 
                 $fp = fopen("./$repo/sonar-project.properties", "w");
-                if($fp) {
-                  fwrite($fp, "sonar.projectKey=$repo:default\n");
-                  fwrite($fp, "sonar.projectName=$repo\n");
-                  fwrite($fp, "sonar.projectVersion=1\n");
+                if ($fp) {
+                    fwrite($fp, "sonar.projectKey=$repo:default\n");
+                    fwrite($fp, "sonar.projectName=$repo\n");
+                    fwrite($fp, "sonar.projectVersion=1\n");
                   
-                  chdir("./$repo/");
-                  $out = shell_exec("sonar-scanner");
+                    chdir("./$repo/");
+                    $out = shell_exec("sonar-scanner");
                   
-                  sleep(10);
+                    sleep(30);
                   
-                  $outputjson = file_get_contents("http://localhost:9000/api/issues/search?componentKeys=$repo:default");
+                    $urlSonar = "http://localhost:9000/api/issues/search?componentKeys=$repo:default";
+                    $outputjson = file_get_contents($urlSonar);
 
-                if (!empty($outputjson)) {
-                    $parsed_json = json_decode($outputjson);
+                    if (!empty($outputjson)) {
+                        $parsed_json = json_decode($outputjson);
 
-                    if (isset($parsed_json->{'issues'})) {
-                        $issues = $parsed_json->{'issues'};
-                        foreach ($issues as $issue) {
-                            $name = $issue->{'message'};
-                            $rule = $issue->{'rule'};
+                        if (isset($parsed_json->{'issues'})) {
+                            $issues = $parsed_json->{'issues'};
+                            foreach ($issues as $issue) {
+                                $name = $issue->{'message'};
+                                $rule = $issue->{'rule'};
 
-                            $threat = 0;
-                            switch ($issue->{'severity'}) {
-                                case 'INFO':
-                                    $threat = 1;
-                                    break;
-                                case 'MINOR':
-                                    $threat = 1;
-                                    break;
-                                case 'MAJOR':
-                                    $threat = 1;
-                                    break;
-                                case 'CRITICAL':
-                                    $threat = 1;
-                                    break;
-                                case 'BLOCKER':
-                                    $threat = 3;
-                                    break;
-                                default:
-                                    $threat = 1;
-                                    break;
-                            }
+                                $threat = 0;
+                                switch ($issue->{'severity'}) {
+                                    case 'INFO':
+                                        $threat = 1;
+                                        break;
+                                    case 'MINOR':
+                                        $threat = 1;
+                                        break;
+                                    case 'MAJOR':
+                                        $threat = 1;
+                                        break;
+                                    case 'CRITICAL':
+                                        $threat = 1;
+                                        break;
+                                    case 'BLOCKER':
+                                        $threat = 3;
+                                        break;
+                                    default:
+                                        $threat = 1;
+                                        break;
+                                }
 
-                            $target = $issue->{'component'};
-                            if ($threat >= $GLOBAL_SEVERITY) {
-                                $addissue = new TypeAddissue();
-                                $addissue->id_folder_bugs = $CONF_WEBISSUES_FOLDER_BUGS;
-                                $addissue->name = $name;
-                                $addissue->description = "$name\n\n$target";
-                                $addissue->assigned = "";
-                                $addissue->state = "Actif";
-                                $addissue->target = $target;
-                                $addissue->cve = "";
-                                $addissue->cwe = "";
-                                $addissue->severity = $threat;
+                                $target = $issue->{'component'};
+                                if ($threat >= $GLOBAL_SEVERITY) {
+                                    $addissue = new TypeAddissue();
+                                    $addissue->id_folder_bugs = $CONF_WEBISSUES_FOLDER_BUGS;
+                                    $addissue->name = $name;
+                                    $addissue->description = "$name\n\n$target";
+                                    $addissue->assigned = "";
+                                    $addissue->state = "Actif";
+                                    $addissue->target = $target;
+                                    $addissue->cve = "";
+                                    $addissue->cwe = "";
+                                    $addissue->severity = $threat;
 
-                                try {
-                                    $param = new SoapParam($addissue, 'tns:addissue');
-                                    $result = $clientsoap->__call('addissue', array('addissue'=>$param));
-                                } catch (SoapFault $e) {
-                                    echo $e->getMessage()."\n";
+                                    try {
+                                        $param = new SoapParam($addissue, 'tns:addissue');
+                                        $result = $clientsoap->__call('addissue', array('addissue'=>$param));
+                                    } catch (SoapFault $e) {
+                                        echo $e->getMessage()."\n";
+                                    }
                                 }
                             }
                         }
                     }
                 }
-               }
-        }
+            }
         //http://localhost:9000/api/issues/search?componentRoots=1:securitybugtracker
-        
         }
 
         $finishscan = new TypeFinishscan();

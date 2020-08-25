@@ -79,8 +79,8 @@ class SecurityPluginCommon
                 $id_type = $GLOBALS['CONF_ID_TYPE_FOLDER_WEB'];
                 $id_attribute = $GLOBALS['CONF_ID_ATTRIBUTE_FOLDER_WEB_URL'];
             } elseif ($type == "servers") {
-              $id_type = $GLOBALS['CONF_ID_TYPE_FOLDER_SERVERS'];
-              $id_attribute = $GLOBALS['CONF_ID_ATTRIBUTE_FOLDER_SERVERS_IPSADDRESS'];
+                $id_type = $GLOBALS['CONF_ID_TYPE_FOLDER_SERVERS'];
+                $id_attribute = $GLOBALS['CONF_ID_ATTRIBUTE_FOLDER_SERVERS_IPSADDRESS'];
             }
 
             $folderscan = $projectManager->getFolder($req["id_folder_scans"]);
