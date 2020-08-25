@@ -300,18 +300,13 @@ class SecurityPluginApi extends System_Api_Base
                 //SecurityPluginCommon::run_openscat();
                 break;
             case "sonar":
-                SecurityPluginCommon::logp("aaa2");
                 $targets = SecurityPluginCommon::findTargets($req, "static");
                 
-                SecurityPluginCommon::logp("aaa3");
                 if (count($targets) == 0) {
-                    SecurityPluginCommon::logp("aaa4");
                     throw new SoapFault("Server", $GLOBALS['ZERO_TARGETS']);
                 }
                 
-                SecurityPluginCommon::logp("aaa5");
                 $issueId = SecurityPluginCommon::runSonar($req, $targets);
-                SecurityPluginCommon::logp("aaa issueId = ".$issueId);
                 break;
         }
 
@@ -1303,8 +1298,6 @@ class SecurityPluginApi extends System_Api_Base
     {
         $req = (array) $req;
 
-        
-            SecurityPluginCommon::logp("here0");
         if (!$this->authws()) {
             throw new SoapFault("Server", $GLOBALS['FAULT_AUTHENTICATION']);
         }
@@ -1319,8 +1312,6 @@ class SecurityPluginApi extends System_Api_Base
             throw new SoapFault("Server", "System_Db_Exception $ex");
         }
         
-            SecurityPluginCommon::logp("here1".$req["name"]);
-            SecurityPluginCommon::logp("here1project".print_r($project, true));
         $projectManager = new System_Api_ProjectManager();
         
         $id_project = -1;
@@ -1330,15 +1321,13 @@ class SecurityPluginApi extends System_Api_Base
         $id_folder_web = -1;
         $id_folder_scans = -1;
         
-            SecurityPluginCommon::logp("here2");
         try {
             $folders = $projectManager->getFoldersForProject($project);
         } catch (System_Api_Error $ex) {
             throw new SoapFault("Server", "System_Api_Error $ex");
         }
-            SecurityPluginCommon::logp("here2après".print_r($folders, true));
+        
         foreach ($folders as $folder) {
-            SecurityPluginCommon::logp("here2 folder");
             if ($folder["type_id"] === $GLOBALS['CONF_ID_TYPE_FOLDER_BUGS']) {
                 $id_folder_bugs = $folder["folder_id"];
             } elseif ($folder["type_id"] === $GLOBALS['CONF_ID_TYPE_FOLDER_SERVERS']) {
@@ -1352,7 +1341,6 @@ class SecurityPluginApi extends System_Api_Base
             }
         }
           
-            SecurityPluginCommon::logp("here2");
         $tab = array(
             array(
               'id_project' => $project["project_id"],
@@ -1416,10 +1404,8 @@ class SecurityPluginApi extends System_Api_Base
 
     public function addproject($req)
     {
-
         $req = (array) $req;
 
-            SecurityPluginCommon::logp("tata1");
         if (!$this->authws()) {
             throw new SoapFault("Server", $GLOBALS['FAULT_AUTHENTICATION']);
         }
@@ -1428,26 +1414,18 @@ class SecurityPluginApi extends System_Api_Base
             throw new SoapFault("Server", $GLOBALS['NAME_FILTER_INVALID']);
         }
 
-            SecurityPluginCommon::logp("tata2");
         try {
-            SecurityPluginCommon::logp("tata2bis1");
             // check before if the project already exist and throw an exception if is
             $typeManager = new System_Api_TypeManager();
             $projectManager = new System_Api_ProjectManager();
-            SecurityPluginCommon::logp("tata2bis2");
             $type = $typeManager->getIssueType($GLOBALS['CONF_ID_TYPE_FOLDER_BUGS']); // Id bugs
-            SecurityPluginCommon::logp("tata2bis3");
             $projectId = $projectManager->addProject($req["name"]);
-            SecurityPluginCommon::logp("tata2bis4");
             $project = $projectManager->getProject($projectId);
-            SecurityPluginCommon::logp("tata2bis5");
 
-            SecurityPluginCommon::logp("tata3");
             if ($req["description"] != '') {
                 $projectManager->addProjectDescription($project, $req["description"], System_Const::TextWithMarkup);
             }
 
-            SecurityPluginCommon::logp("tata4");
             $type_folder_servers = $typeManager->getIssueType($GLOBALS['CONF_ID_TYPE_FOLDER_SERVERS']);
             $type_folder_codes = $typeManager->getIssueType($GLOBALS['CONF_ID_TYPE_FOLDER_CODES']);
             $type_folder_web = $typeManager->getIssueType($GLOBALS['CONF_ID_TYPE_FOLDER_WEB']);

@@ -4,12 +4,12 @@
 ---
 
 ## Supported tools
-- [https://www.openvas.org/](OpenVAS)
-- [https://github.com/jeremylong/DependencyCheck](DependencyCheck) 
-- [https://www.arachni-scanner.com/](arachni)
-- [https://www.sonarqube.org/](SonarQube)
-- [https://github.com/rbsec/sslscan](sslscan)
-- [https://www.zaproxy.org/](Owasp ZAP) 
+- [OpenVAS](https://www.openvas.org/)
+- [DependencyCheck](https://github.com/jeremylong/DependencyCheck)
+- [arachni](https://www.arachni-scanner.com/)
+- [SonarQube](https://www.sonarqube.org/)
+- [sslscan](https://github.com/rbsec/sslscan)
+- [Owasp ZAP](https://www.zaproxy.org/)
 
 ## Prerequisites
 
@@ -20,7 +20,7 @@ git clone https://github.com/designsecurity/security-bugtracker tmp-security-bug
 ```
 
 ### Webissues installation
-Security-bugtracker is just a plugin of the awesome [https://github.com/mimecorg/webissues](webissues) bugtracker.  
+Security-bugtracker is just a plugin of the awesome [webissues](https://github.com/mimecorg/webissues) bugtracker.  
 Clone webissues repository to your web server directory of your choice (`/srv/www/htdocs/webissues` below):
 
 ```shell
@@ -34,7 +34,7 @@ Go to http://localhost/webissues/setup/install.php to configure webissues
 
 ### OpenVAS plugin installation
 
-[https://www.openvas.org/](OpenVAS) is the only mandatory security tool to install, security-bugtracker is deeply integrated with it.  
+[OpenVAS](https://www.openvas.org/) is the only mandatory security tool to install, security-bugtracker is deeply integrated with it.  
 Edit the OpenVAS-plugin configuration file *tmp-security-bugtracker/security_tools/openvas/openvas.conf* with the required informations.  
 
 ## Configuration
