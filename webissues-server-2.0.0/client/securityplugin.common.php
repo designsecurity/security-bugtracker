@@ -145,7 +145,6 @@ class SecurityPluginCommon
             $attributefilter = $typeManager->getAttributeType($GLOBALS['CONF_ID_ATTRIBUTE_FOLDER_SCANS_SEVERITY']);
             $valuefilter = $formatterManager->convertAttributeValue($attributefilter[ 'attr_def' ], $req["filter"]);
             $issueManager->setValue($issue, $attributefilter, $valuefilter);
-            
         } catch (System_Api_Error $ex) {
             SecurityPluginCommon::logp($ex);
             throw new SoapFault("Server", "System_Api_Error $ex");

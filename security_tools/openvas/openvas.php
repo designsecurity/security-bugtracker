@@ -54,7 +54,8 @@ if (!empty($alertscanid)) {
     $idxml = $GLOBALS['CONF_OPENVAS_CONFIG_ID_XML'];
     $cmd = "sudo -u gvm $openvasomp --gmp-username $openvaslogin --gmp-password ".$openvaspwd;
     $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
-    $cmd .= " --xml='<get_reports report_id=\"$id_report\" format_id=\"$idxml\" details=\"1\" filter=\"sort-reverse=severity rows=10000\" />'";
+    $cmd .= " --xml='<get_reports report_id=\"$id_report\" format_id=\"$idxml\" details=\"1\"";
+    $cmd .= " filter=\"sort-reverse=severity rows=10000\" />'";
     $outputxml = shell_exec($cmd);
     
     $idpdf = $GLOBALS['CONF_OPENVAS_CONFIG_ID_PDF'];
@@ -88,7 +89,6 @@ if (!empty($alertscanid)) {
   
         if (isset($report->report->report->results->result)) {
             foreach ($report->report->report->results->result as $result) {
-                
                 if (isset($result->severity)) {
                     switch ($result->severity) {
                         case ($result->severity >= 0 && $result->severity < 4):
