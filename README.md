@@ -34,7 +34,7 @@ Go to http://localhost/webissues/setup/install.php to configure webissues.
 
 ### OpenVAS plugin installation
 
-[OpenVAS](https://www.openvas.org/) is the only mandatory security tool to install, security-bugtracker is deeply integrated with it, OpenVAS 9.0.1 or higher is necessary. Then, ddit the OpenVAS-plugin configuration file *tmp-security-bugtracker/security_tools/openvas/openvas.conf* with the required informations (look a the comments in this file for more help).  
+[OpenVAS](https://www.openvas.org/) is the only mandatory security tool to install, security-bugtracker is deeply integrated with it, OpenVAS 9.0.1 or higher is necessary. Then, edit the OpenVAS-plugin configuration file [*tmp-security-bugtracker/security_tools/openvas/openvas.conf*](./security_tools/openvas/openvas.conf) with the required informations (look a the comments in this file for more help).  
 
 ## Configuration
 
@@ -71,7 +71,7 @@ When OpenVAS scan will end, corresponding issues will be automatically added to 
 
 ### With a script
 
-Some scripts are available in the [security_tools/jobs](./security_tools/jobs) folder to automate security large scans.  
-For instance [run_openvas.php](./security_tools/jobs/run_openvas.php) script will read all assets (ips, hostnames, corresponding projects) from text files in the [data](./security_tools/jobs/data/) folder and create "*projects*" in security-bugtracker, add "*servers* issues", "*web* issues" (hostnames) and "*scans* issues" (therefore OpenVAS scans will be automatically started).
+Some scripts are available in the [security_tools/jobs](./security_tools/jobs) folder to automate large security scans.  
+For instance [run_openvas.php](./security_tools/jobs/run_openvas.php) script will read all assets (ips, hostnames, corresponding projects) from text files in the [data](./security_tools/jobs/data/) folder and create "*projects*" in security-bugtracker, "*servers* issues", "*web* issues" (hostnames) and "*scans* issues" (therefore OpenVAS scans will be automatically started with all this data).
 
 
