@@ -238,7 +238,6 @@ class SecurityPluginApi extends System_Api_Base
             throw new SoapFault("Server", $GLOBALS['DUPLICATE_OBJECT']);
         }
 
-            SecurityPluginCommon::logp("aaa1");
         switch ($req["tool"]) {
             case "openvas":
                 $targetsweb = SecurityPluginCommon::findTargets($req, "web");
@@ -1070,6 +1069,17 @@ class SecurityPluginApi extends System_Api_Base
                 $value = $formatterManager->convertAttributeValue($attribute[ 'attr_def' ], $avalue);
                 $issueManager->setValue($issue, $attribute, $value);
             }
+            
+            // severity
+            $severityattribute = $typeManager->getAttributeType(4);
+            $valueseverity = $formatterManager->convertAttributeValue($severityattribute[ 'attr_def' ], $req["severity"]);
+            $issueManager->setValue($issue, $severityattribute, $valueseverity);
+            
+            // status
+            $statusattribute = $typeManager->getAttributeType(2);
+            $valuestatus = $formatterManager->convertAttributeValue($statusattribute[ 'attr_def' ], $req["state"]);
+            $issueManager->setValue($issue, $statusattribute, $valuestatus);
+            
         } catch (System_Api_Error $ex) {
             SecurityPluginCommon::logp($ex);
             throw new SoapFault("Server", "System_Api_Error $ex");

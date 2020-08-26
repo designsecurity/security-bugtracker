@@ -37,10 +37,11 @@ if (!empty($alertscanid)) {
         ini_set('default_socket_timeout', 10000);
         ini_set('soap.wsdl_cache_enabled', 0);
         $clientsoap = new SoapClient($GLOBALS['CONF_WEBISSUES_WS_ENDPOINT']."?wsdl", $credentials);
+        $clientsoap->__setLocation($GLOBALS['CONF_WEBISSUES_WS_ENDPOINT']);
         $param = new SoapParam($getparamsfromalertid, 'tns:getparamsfromalertid');
         $result = $clientsoap->__call('getparamsfromalertid', array('getparamsfromalertid'=>$param));
     } catch (SoapFault $e) {
-        OpenvasApi::logp("it's here".$e->getMessage());
+        OpenvasApi::logp($e->getMessage());
     }
 
     $id_folder_bugs = $result->getparamsfromalertid_details->id_folder_bugs;
@@ -53,7 +54,7 @@ if (!empty($alertscanid)) {
     $idxml = $GLOBALS['CONF_OPENVAS_CONFIG_ID_XML'];
     $cmd = "sudo -u gvm $openvasomp --gmp-username $openvaslogin --gmp-password ".$openvaspwd;
     $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
-    $cmd .= " --xml='<get_reports report_id=\"$id_report\" format_id=\"$idxml\" details=\"1\" />'";
+    $cmd .= " --xml='<get_reports report_id=\"$id_report\" format_id=\"$idxml\" details=\"1\" filter=\"sort-reverse=severity rows=10000\" />'";
     $outputxml = shell_exec($cmd);
     
     $idpdf = $GLOBALS['CONF_OPENVAS_CONFIG_ID_PDF'];
@@ -61,16 +62,6 @@ if (!empty($alertscanid)) {
     $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
     $cmd .= " --xml='<get_reports report_id=\"$id_report\" format_id=\"$idpdf\" details=\"1\" />'";
     $outputpdf = urlencode(shell_exec($cmd));
-/*
-    $cmd = "sudo -u gvm $openvasomp --gmp-username $openvaslogin --gmp-password $openvaspwd";
-    $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
-    $cmd .= " --xml='<delete_target target_id=\"$id_target\"/>'";
-    $output = shell_exec($cmd);
-
-    $cmd = "sudo -u gvm $openvasomp --gmp-username $openvaslogin --gmp-password $openvaspwd";
-    $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
-    $cmd .= " --xml='<delete_alert alert_id=\"$id_alert\"/>'";
-    $output = shell_exec($cmd);
 
     $cmd = "sudo -u gvm $openvasomp --gmp-username $openvaslogin --gmp-password $openvaspwd";
     $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
@@ -81,57 +72,69 @@ if (!empty($alertscanid)) {
     $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
     $cmd .= " --xml='<delete_report report_id=\"$id_report\"/>'";
     $output = shell_exec($cmd);
-*/
+    
+    $cmd = "sudo -u gvm $openvasomp --gmp-username $openvaslogin --gmp-password $openvaspwd";
+    $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
+    $cmd .= " --xml='<delete_alert alert_id=\"$id_alert\"/>'";
+    $output = shell_exec($cmd);
+    
+    $cmd = "sudo -u gvm $openvasomp --gmp-username $openvaslogin --gmp-password $openvaspwd";
+    $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
+    $cmd .= " --xml='<delete_target target_id=\"$id_target\"/>'";
+    $output = shell_exec($cmd);
+    
     if (!empty($outputxml)) {
         $report = new SimpleXMLElement($outputxml);
   
         if (isset($report->report->report->results->result)) {
             foreach ($report->report->report->results->result as $result) {
-                if (isset($result->threat)) {
-                    switch ($result->threat) {
-                        case 'Log':
+                
+                if (isset($result->severity)) {
+                    switch ($result->severity) {
+                        case ($result->severity >= 0 && $result->severity < 4):
                             $threat = 1;
                             break;
-                        case 'Low':
-                            $threat = 1;
-                            break;
-                        case 'Medium':
+                        case ($result->severity >= 4 && $result->severity < 7):
                             $threat = 2;
                             break;
-                        case 'High':
+                        case ($result->severity >= 7 && $result->severity < 9):
+                            $threat = 2;
+                            break;
+                        case ($result->severity >= 9 && $result->severity <= 10):
                             $threat = 3;
                             break;
                         default:
                             $threat = 1;
                             break;
                     }
-                }
+                
+                    if ($threat >= $severity) {
+                        $target = $result->host.":".$result->port;
+                        $description = "vulnerable target : $target \n\n".$result->description;
 
-                if ($threat >= $severity) {
-                    $target = $result->host.":".$result->port;
-                    $description = "vulnerable target : $target \n\n".$result->description;
+                        $addissue = new TypeAddissue();
+                        $addissue->id_folder_bugs = $id_folder_bugs;
+                        $addissue->name = $result->name;
+                        $addissue->description = $description;
+                        $addissue->assigned = "";
+                        $addissue->state = "Actif";
+                        $addissue->severity = $threat;
+                        $addissue->version = 1;
+                        $addissue->target = $target;
+                        $addissue->cve = $GLOBALS['CONF_ISSUE_DEFAULT_CVENAME'];
+                        if (isset($result->cve) && !empty($result->cve) && $result->cve != "NOCVE") {
+                            $addissue->cve = $result->cve;
+                        }
+                        $addissue->cwe = $GLOBALS['CONF_ISSUE_DEFAULT_CWENAME'];
 
-                    $addissue = new TypeAddissue();
-                    $addissue->id_folder_bugs = $id_folder_bugs;
-                    $addissue->name = $result->name;
-                    $addissue->description = $description;
-                    $addissue->assigned = "";
-                    $addissue->state = "Actif";
-                    $addissue->severity = $threat;
-                    $addissue->version = 1;
-                    $addissue->target = $target;
-                    $addissue->cve = $CONF_ISSUE_DEFAULT_CVENAME;
-                    if (isset($result->cve) && !empty($result->cve) && $result->cve != "NOCVE") {
-                        $addissue->cve = $result->cve;
-                    }
-                    $addissue->cwe = $CONF_ISSUE_DEFAULT_CWENAME;
-
-                    try {
-                        $param = new SoapParam($addissue, 'tns:addissue');
-                        $result = $clientsoap->__call('addissue', array('addissue'=>$param));
-                        sleep(1);
-                    } catch (SoapFault $e) {
-                        OpenvasApi::logp($e->getMessage()/*." issue: ".print_r($addissue, true)*/);
+                        try {
+                            $param = new SoapParam($addissue, 'tns:addissue');
+                            
+                            $result = $clientsoap->__call('addissue', array('addissue'=>$param));
+                            sleep(1);
+                        } catch (SoapFault $e) {
+                            OpenvasApi::logp($e->getMessage()/*." issue: ".print_r($addissue, true)*/);
+                        }
                     }
                 }
             }

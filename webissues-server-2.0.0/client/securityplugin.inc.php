@@ -365,7 +365,11 @@ class Client_SecurityPlugin extends System_Web_Component
                         $content .= "\$CONF_ID_TYPE_FOLDER_SERVERS = $id_type_folder_servers;\n";
                         $content .= "\$CONF_ID_TYPE_FOLDER_CODES = $id_type_folder_codes;\n";
                         $content .= "\$CONF_ID_TYPE_FOLDER_WEB = $id_type_folder_web;\n";
-                        $content .= "\$CONF_ID_TYPE_FOLDER_SCANS = $id_type_folder_scans;\n\n";
+                        $content .= "\$CONF_ID_TYPE_FOLDER_SCANS = $id_type_folder_scans;\n";
+                        $content .= "\$CONF_ISSUE_DEFAULT_CVENAME = \"nocve\";\n";
+                        $content .= "\$CONF_ISSUE_DEFAULT_CWENAME = \"nocwe\";\n\n";
+                        
+                        $GLOBALS['CONF_ISSUE_DEFAULT_CVENAME'])
                         $content .= "?>";
 
                         // *********************************************************************************

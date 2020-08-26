@@ -95,7 +95,6 @@ class SecurityPluginCommon
                 }
             }
 
-            SecurityPluginCommon::logp("TEST".$id_folder_targets);
             if ($id_folder_targets > 0) {
                 $nbtargets = 0;
                 $foldertargets = $projectManager->getFolder($id_folder_targets);
@@ -114,59 +113,44 @@ class SecurityPluginCommon
             SecurityPluginCommon::logp($ex);
             //throw new SoapFault("Server", "System_Api_Error $ex");
         }
-            SecurityPluginCommon::logp("TEST".print_r($targets, true));
 
         return $targets;
     }
 
     public static function commonScan($req)
     {
-      
-            SecurityPluginCommon::logp("commonScan 1");
         $issueManager = new System_Api_IssueManager();
         $projectManager = new System_Api_ProjectManager();
         $typeManager = new System_Api_TypeManager();
         $formatterManager = new System_Api_Formatter();
       
-            SecurityPluginCommon::logp("commonScan 2");
         try {
             if (empty($req["time"])) {
                 $req["time"] = "stopped";
             }
 
-            SecurityPluginCommon::logp("commonScan 3");
             $folderscan = $projectManager->getFolder($req["id_folder_scans"]);
             $issueId = $issueManager->addIssue($folderscan, $req["name"], null);
             $issue = $issueManager->getIssue($issueId);
             $issueManager->addDescription($issue, $req["description"], System_Const::TextWithMarkup);
             
-
-            SecurityPluginCommon::logp("commonScan 4");
             $attributetime = $typeManager->getAttributeType($GLOBALS['CONF_ID_ATTRIBUTE_FOLDER_SCANS_TIME']);
-            /*
-            SecurityPluginCommon::logp("commonScan 4 <<<<");
             $valuetime = $formatterManager->convertAttributeValue($attributetime[ 'attr_def' ], $req["time"]);
-
-            SecurityPluginCommon::logp("commonScan 4 bis");
+            $issueManager->setValue($issue, $attributetime, $valuetime);
+            
             $attributetool = $typeManager->getAttributeType($GLOBALS['CONF_ID_ATTRIBUTE_FOLDER_SCANS_TOOL']);
             $valuetool = $formatterManager->convertAttributeValue($attributetool[ 'attr_def' ], $req["tool"]);
-
-            SecurityPluginCommon::logp("commonScan 4 bis bis");
-            $attributeseve = $typeManager->getAttributeType($GLOBALS['CONF_ID_ATTRIBUTE_FOLDER_SCANS_SEVERITY']);
-            $valueseve = $formatterManager->convertAttributeValue($attributeseve[ 'attr_def' ], $req["filter"]);
-
-            SecurityPluginCommon::logp("commonScan 5");
-            $issueManager->setValue($issue, $attributetime, $valuetime);
             $issueManager->setValue($issue, $attributetool, $valuetool);
-            $issueManager->setValue($issue, $attributeseve, $valueseve);
-            */
-            SecurityPluginCommon::logp("commonScan 6");
+            
+            $attributefilter = $typeManager->getAttributeType($GLOBALS['CONF_ID_ATTRIBUTE_FOLDER_SCANS_SEVERITY']);
+            $valuefilter = $formatterManager->convertAttributeValue($attributefilter[ 'attr_def' ], $req["filter"]);
+            $issueManager->setValue($issue, $attributefilter, $valuefilter);
+            
         } catch (System_Api_Error $ex) {
             SecurityPluginCommon::logp($ex);
             throw new SoapFault("Server", "System_Api_Error $ex");
         }
 
-            SecurityPluginCommon::logp("commonScan 7 = ".$issueId);
         return $issueId;
     }
 
@@ -204,9 +188,7 @@ class SecurityPluginCommon
             $clientsoap->__setLocation($GLOBALS['CONF_OPENVAS_WS_ENDPOINT']);
             $param = new SoapParam($run_openvas, 'tns:run_openvas');
             
-            SecurityPluginCommon::logp("run_openvas1");
             $result = $clientsoap->__call('run_openvas', array('run_openvas'=>$param));
-            SecurityPluginCommon::logp("run_openvas2");
             
             $id_target = $result->result_run_openvas_details->id_target;
             $id_task = $result->result_run_openvas_details->id_task;

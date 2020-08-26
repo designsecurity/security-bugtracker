@@ -9,7 +9,7 @@ $CONF_WEBISSUES_OPENVAS_LOGIN = "openvas";
 // the password of the administrator account created in webissues for openvas
 $CONF_WEBISSUES_OPENVAS_PASSWORD = "openvas";
 // the url of security-bugtracker webservices.php
-$CONF_WEBISSUES_WS_ENDPOINT = "http://localhost:81/webissues-server-2.0.0/client/webservices.php";
+$CONF_WEBISSUES_WS_ENDPOINT = "http://localhost:81/webissues/client/webservices.php";
 // the url of security-bugtracker openvas plugin
 $CONF_OPENVAS_ALERT_URL = "http://localhost:81/openvas-services/openvas.php";
 // the openvas account to run scans
