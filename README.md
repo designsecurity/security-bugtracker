@@ -34,7 +34,7 @@ Go to http://localhost/webissues/setup/install.php to configure webissues.
 
 ### OpenVAS plugin installation
 
-[OpenVAS](https://www.openvas.org/) is the only mandatory security tool to install, security-bugtracker is deeply integrated with it, OpenVAS 9.0.1 or higher is necessary. Then, edit the OpenVAS-plugin configuration file [*tmp-security-bugtracker/security_tools/openvas/openvas.conf*](./security_tools/openvas/openvas.conf) with the required informations (look a the comments in this file for more help).  
+[OpenVAS](https://www.openvas.org/) is the only mandatory security tool to install, security-bugtracker is deeply integrated with it, OpenVAS 9.0.1 or higher is necessary. Then, edit the OpenVAS-plugin configuration file [*tmp-security-bugtracker/security_tools/openvas/openvas.conf.php*](./security_tools/openvas/openvas.conf.php) with the required informations (look a the comments in this file for more help).  
 
 ## Configuration
 
