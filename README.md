@@ -13,7 +13,7 @@
 
 ## Prerequisites
 
-Clone security-bugtracker into a temprary directory of your choice (`tmp-security-bugtracker` below):
+Clone security-bugtracker into a temporary directory of your choice (`tmp-security-bugtracker` below):
 
 ```shell
 git clone https://github.com/designsecurity/security-bugtracker tmp-security-bugtracker
@@ -68,4 +68,10 @@ Use your favorite SOAP client to request security bugtracker webservices:
 When OpenVAS scan will end, corresponding issues will be automatically added to bugs folder of your newly project:
 
 ![ScreenShot](./resultbugsdemo.png)
+
+### With a script
+
+Some scripts are available in the [security_tools/jobs](./security_tools/jobs) folder to automate security large scans.  
+For instance [run_openvas.php](./security_tools/jobs/run_openvas.php) script will read all assets (ips, hostnames, corresponding projects) from text files in the [data](./security_tools/jobs/data/) folder and create "*projects*" in security-bugtracker, add "*servers* issues", "*web* issues" (hostnames) and "*scans* issues" (therefore OpenVAS scans will be automatically started).
+
 
