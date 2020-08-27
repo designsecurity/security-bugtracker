@@ -8,12 +8,14 @@
  */
 
 
+include('common.php');
 include('assets.api.php');
 
 $credentials = array('login' => $CONF_WEBISSUES_DCHECK_LOGIN, 'password' => $CONF_WEBISSUES_DCHECK_PASSWORD);
 $clientsoap = new SoapClient($CONF_WEBISSUES_WS_ENDPOINT."?wsdl", $credentials);
+$clientsoap->__setLocation($CONF_WEBISSUES_WS_ENDPOINT);
 
-add_assets_codes();
+// add_assets_codes();
 
 $addscan = new TypeAddscan();
 $addscan->id_folder_scans = (int) $CONF_WEBISSUES_FOLDER_SCANS;
@@ -29,25 +31,34 @@ if ($result) {
     $id_scan = $result->result_addscan_details->id_scan;
 
     $getcodes = new TypeGetcodes();
-    $getcodes->id_folder_codes = $CONF_WEBISSUES_FOLDER_CODES;
+    $getcodes->id_folder_codes = (int) $CONF_WEBISSUES_FOLDER_CODES;
     $param = new SoapParam($getcodes, 'tns:type_getcodes');
     $results = $clientsoap->__call('getcodes', array('type_getcodes'=>$param));
-
+    
     if ($results) {
-        if (isset($results->result_getcodes_details) && count($results->result_getcodes_details) > 1) {
+        if (is_array($results->result_getcodes_details) && count($results->result_getcodes_details) > 1) {
             $results = $results->result_getcodes_details;
         }
 
         foreach ($results as $resultcode) {
-            $id_code = $resultcode->id_code;
-            $name = $resultcode->name;
-            $code = $resultcode->code;
-
-            $cmd = "$CONF_DEPENDENCYCHECK_BIN --app temp --format XML";
-            $cmd .= " --scan $code --out $code/dependency-check-report.xml";
+          $id_code = $resultcode->id_code;
+          $name = $resultcode->name;
+          $code = $resultcode->code;
+               
+          preg_match('|github.com/(.*)/(.*)(\.git)?|', $code, $matches);
+              
+          if (isset($matches[1]) && isset($matches[2])) {
+            $org = $matches[1];
+            $repo = $matches[2];
+                
+            chdir("./tmp/");
+            $out = shell_exec("rm -rf $repo");
+            $out = shell_exec("git clone $code");
+            
+            $cmd = "$CONF_DEPENDENCYCHECK_BIN --format XML --scan ./$repo/ --out ./$repo/";
             $out = shell_exec($cmd);
-            $outputxml = file_get_contents("$code/dependency-check-report.xml");
-            $out = shell_exec("rm $code/dependency-check-report.xml");
+            $outputxml = file_get_contents("./$repo/dependency-check-report.xml");
+            $out = shell_exec("rm ./$repo/dependency-check-report.xml");
 
             if (!empty($outputxml)) {
                 $report = new SimpleXMLElement($outputxml);
@@ -104,11 +115,12 @@ if ($result) {
                 }
             }
         }
+      }
 
-        $finishscan = new TypeFinishscan();
-        $finishscan->id_scan = $id_scan;
+      $finishscan = new TypeFinishscan();
+      $finishscan->id_scan = $id_scan;
 
-        $param = new SoapParam($finishscan, 'tns:finishscan');
-        $result = $clientsoap->__call('finishscan', array('finishscan'=>$param));
-    }
+      $param = new SoapParam($finishscan, 'tns:finishscan');
+      $result = $clientsoap->__call('finishscan', array('finishscan'=>$param));
+  }
 }

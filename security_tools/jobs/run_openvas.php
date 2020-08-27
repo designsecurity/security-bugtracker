@@ -13,6 +13,7 @@ include('assets.api.php');
 
 $credentials = array('login' => $CONF_WEBISSUES_OPENVAS_LOGIN, 'password' => $CONF_WEBISSUES_OPENVAS_PASSWORD);
 $clientsoap = new SoapClient($CONF_WEBISSUES_WS_ENDPOINT."?wsdl", $credentials);
+$clientsoap->__setLocation($CONF_WEBISSUES_WS_ENDPOINT);
 
 /*
 run_openvas.php ips/hostnames int_foldertoputscans

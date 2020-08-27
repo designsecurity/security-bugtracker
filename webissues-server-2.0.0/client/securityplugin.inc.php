@@ -368,8 +368,6 @@ class Client_SecurityPlugin extends System_Web_Component
                         $content .= "\$CONF_ID_TYPE_FOLDER_SCANS = $id_type_folder_scans;\n";
                         $content .= "\$CONF_ISSUE_DEFAULT_CVENAME = \"nocve\";\n";
                         $content .= "\$CONF_ISSUE_DEFAULT_CWENAME = \"nocwe\";\n\n";
-                        
-                        $GLOBALS['CONF_ISSUE_DEFAULT_CVENAME'])
                         $content .= "?>";
 
                         // *********************************************************************************
