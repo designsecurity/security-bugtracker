@@ -41,73 +41,74 @@ if ($result) {
         }
 
         foreach ($results as $resultcode) {
-          $id_code = $resultcode->id_code;
-          $name = $resultcode->name;
-          $code = $resultcode->code;
+            $id_code = $resultcode->id_code;
+            $name = $resultcode->name;
+            $code = $resultcode->code;
                
-          preg_match('|github.com/(.*)/(.*)(\.git)?|', $code, $matches);
+            preg_match('|github.com/(.*)/(.*)(\.git)?|', $code, $matches);
               
-          if (isset($matches[1]) && isset($matches[2])) {
-            $org = $matches[1];
-            $repo = $matches[2];
+            if (isset($matches[1]) && isset($matches[2])) {
+                $org = $matches[1];
+                $repo = $matches[2];
                 
-            chdir("./tmp/");
-            $out = shell_exec("rm -rf $repo");
-            $out = shell_exec("git clone $code");
+                chdir("./tmp/");
+                $out = shell_exec("rm -rf $repo");
+                $out = shell_exec("git clone $code");
             
-            $cmd = "$CONF_DEPENDENCYCHECK_BIN --format XML --scan ./$repo/ --out ./$repo/";
-            $out = shell_exec($cmd);
-            $outputxml = file_get_contents("./$repo/dependency-check-report.xml");
-            $out = shell_exec("rm ./$repo/dependency-check-report.xml");
+                $cmd = "$CONF_DEPENDENCYCHECK_BIN --format XML --scan ./$repo/ --out ./$repo/";
+                $out = shell_exec($cmd);
+                $outputxml = file_get_contents("./$repo/dependency-check-report.xml");
+                $out = shell_exec("rm ./$repo/dependency-check-report.xml");
 
-            if (!empty($outputxml)) {
-                $report = new SimpleXMLElement($outputxml);
-                if (isset($report->dependencies->dependency)) {
-                    foreach ($report->dependencies->dependency as $dependency) {
-                        if (isset($dependency->fileName)) {
-                            if (isset($dependency->vulnerabilities)) {
-                                $lastthreat = 0;
-                                $description = "";
-                                foreach ($dependency->vulnerabilities->vulnerability as $vulnerability) {
-                                    switch ($vulnerability->severity) {
-                                        case 'Log':
-                                            $threat = 1;
-                                            break;
-                                        case 'Low':
-                                            $threat = 1;
-                                            break;
-                                        case 'Medium':
-                                            $threat = 2;
-                                            break;
-                                        case 'High':
-                                            $threat = 3;
-                                            break;
-                                        default:
-                                            $threat = 1;
-                                            break;
+                if (!empty($outputxml)) {
+                    $report = new SimpleXMLElement($outputxml);
+                    if (isset($report->dependencies->dependency)) {
+                        foreach ($report->dependencies->dependency as $dependency) {
+                            if (isset($dependency->fileName)) {
+                                if (isset($dependency->vulnerabilities)) {
+                                    $lastthreat = 0;
+                                    $description = "";
+                                    foreach ($dependency->vulnerabilities->vulnerability as $vulnerability) {
+                                        switch ($vulnerability->severity) {
+                                            case 'Log':
+                                                $threat = 1;
+                                                break;
+                                            case 'Low':
+                                                $threat = 1;
+                                                break;
+                                            case 'Medium':
+                                                $threat = 2;
+                                                break;
+                                            case 'High':
+                                                $threat = 3;
+                                                break;
+                                            default:
+                                                $threat = 1;
+                                                break;
+                                        }
+
+                                        if ($threat > $lastthreat) {
+                                            $lastthreat = $threat;
+                                        }
+
+                                        if ($threat >= $GLOBAL_SEVERITY) {
+                                            $description = $vulnerability->name."\n".$vulnerability->description."\n\n";
+                                        }
                                     }
 
-                                    if ($threat > $lastthreat) {
-                                        $lastthreat = $threat;
+                                    if ($lastthreat >= $GLOBAL_SEVERITY) {
+                                        $description = "vulnerable target : $code\n\n".$description;
+                                        $addissue = new TypeAddissue();
+                                        $addissue->id_folder_bugs = $CONF_WEBISSUES_FOLDER_BUGS;
+                                        $addissue->name = "known vulnerabilities in ".$dependency->fileName;
+                                        $addissue->description = $description;
+                                        $addissue->assigned = "";
+                                        $addissue->state = "Actif";
+                                        $addissue->severity = $lastthreat;
+
+                                        $param = new SoapParam($addissue, 'tns:addissue');
+                                        $result = $clientsoap->__call('addissue', array('addissue'=>$param));
                                     }
-
-                                    if ($threat >= $GLOBAL_SEVERITY) {
-                                        $description = $vulnerability->name."\n".$vulnerability->description."\n\n";
-                                    }
-                                }
-
-                                if ($lastthreat >= $GLOBAL_SEVERITY) {
-                                    $description = "vulnerable target : $code\n\n".$description;
-                                    $addissue = new TypeAddissue();
-                                    $addissue->id_folder_bugs = $CONF_WEBISSUES_FOLDER_BUGS;
-                                    $addissue->name = "known vulnerabilities in ".$dependency->fileName;
-                                    $addissue->description = $description;
-                                    $addissue->assigned = "";
-                                    $addissue->state = "Actif";
-                                    $addissue->severity = $lastthreat;
-
-                                    $param = new SoapParam($addissue, 'tns:addissue');
-                                    $result = $clientsoap->__call('addissue', array('addissue'=>$param));
                                 }
                             }
                         }
@@ -115,12 +116,11 @@ if ($result) {
                 }
             }
         }
-      }
 
-      $finishscan = new TypeFinishscan();
-      $finishscan->id_scan = $id_scan;
+        $finishscan = new TypeFinishscan();
+        $finishscan->id_scan = $id_scan;
 
-      $param = new SoapParam($finishscan, 'tns:finishscan');
-      $result = $clientsoap->__call('finishscan', array('finishscan'=>$param));
-  }
+        $param = new SoapParam($finishscan, 'tns:finishscan');
+        $result = $clientsoap->__call('finishscan', array('finishscan'=>$param));
+    }
 }
