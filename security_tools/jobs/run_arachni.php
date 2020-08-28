@@ -8,12 +8,14 @@
  */
 
 
+include('common.php');
 include('assets.api.php');
 
 $CONF_COOKIES_TEST = "";
 
 $credentials = array('login' => $CONF_WEBISSUES_ARACHNI_LOGIN, 'password' => $CONF_WEBISSUES_ARACHNI_PASSWORD);
 $clientsoap = new SoapClient($CONF_WEBISSUES_WS_ENDPOINT."?wsdl", $credentials);
+$clientsoap->__setLocation($CONF_WEBISSUES_WS_ENDPOINT);
 
 add_assets_urls();
 
@@ -36,7 +38,7 @@ if ($result) {
     $results = $clientsoap->__call('geturls', array('type_geturls'=>$param));
 
     if ($results) {
-        if (isset($results->result_geturls_details) && count($results->result_geturls_details) > 1) {
+        if (is_array($results->result_geturls_details) && count($results->result_geturls_details) > 1) {
             $results = $results->result_geturls_details;
         }
 
@@ -49,12 +51,12 @@ if ($result) {
             $url = chop($url);
             //echo "url arachni 2 = '$url'\n";
 
-            $cmd = "$CONF_ARACHNI_BIN $url --http-cookie-string=\"".$CONF_COOKIES_TEST;
-            $cmd .= "--http-cookie-string=\"".$CONF_COOKIES_TEST."\" --report-save-path /tmp/arachni.afr";
+            $cmd = "$CONF_ARACHNI_BIN $url --http-cookie-string=\"".$CONF_COOKIES_TEST."\"";
+            $cmd .= " --report-save-path ./tmp/arachni.afr";
             echo "$cmd";
             $out = shell_exec("$cmd");
-            $out = shell_exec("$CONF_ARACHNI_REPORT_BIN /tmp/arachni.afr --report=xml:outfile=/tmp/arachni.xml");
-            $outputxml = file_get_contents("/tmp/arachni.xml");
+            $out = shell_exec("$CONF_ARACHNI_REPORT_BIN ./tmp/arachni.afr --report=xml:outfile=./tmp/arachni.xml");
+            $outputxml = file_get_contents("./tmp/arachni.xml");
             //$out = shell_exec("rm /tmp/arachni.afr");
             //$out = shell_exec("rm /tmp/arachni.xml");
 

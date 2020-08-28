@@ -8,12 +8,14 @@
  */
 
 
+include('common.php');
 include('assets.api.php');
 
 $credentials = array('login' => $CONF_WEBISSUES_SSLSCAN_LOGIN, 'password' => $CONF_WEBISSUES_SSLSCAN_PASSWORD);
 $clientsoap = new SoapClient($CONF_WEBISSUES_WS_ENDPOINT."?wsdl", $credentials);
+$clientsoap->__setLocation($CONF_WEBISSUES_WS_ENDPOINT);
 
-add_assets_urls();
+// add_assets_urls();
 
 $addscan = new TypeAddscan();
 $addscan->id_folder_scans = (int) $CONF_WEBISSUES_FOLDER_SCANS;
@@ -36,7 +38,7 @@ if ($result) {
     $results = $clientsoap->__call('geturls', array('type_geturls'=>$param));
 
     if ($results) {
-        if (isset($results->result_geturls_details) && count($results->result_geturls_details) > 1) {
+        if (is_array($results->result_geturls_details) && count($results->result_geturls_details) > 1) {
             $results = $results->result_geturls_details;
         }
 
@@ -47,7 +49,6 @@ if ($result) {
             $url = chop($url);
 
             $outputjson = shell_exec("$CONF_SSLSCAN_BIN $url");
-            //$outputjson = file_get_contents("test.json"); // local
 
             if (!empty($outputjson)) {
                 $parsed_json = json_decode($outputjson);

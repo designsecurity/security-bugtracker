@@ -8,7 +8,9 @@
  */
 
 
+include('common.php');
 include('assets.api.php');
+require "vendor/autoload.php";
 
 $zap = new Zap\Zapv2($CONF_ZAP_PROXY_ADDRESS);
 
@@ -22,6 +24,7 @@ if (is_null($version)) {
 
 $credentials = array('login' => $CONF_WEBISSUES_ZAP_LOGIN, 'password' => $CONF_WEBISSUES_ZAP_PASSWORD);
 $clientsoap = new SoapClient($CONF_WEBISSUES_WS_ENDPOINT."?wsdl", $credentials);
+$clientsoap->__setLocation($CONF_WEBISSUES_WS_ENDPOINT);
 
 add_assets_urls();
 
@@ -45,7 +48,7 @@ try {
         $results = $clientsoap->__call('geturls', array('type_geturls'=>$param));
 
         if ($results) {
-            if (isset($results->result_geturls_details) && count($results->result_geturls_details) > 1) {
+            if (is_array($results->result_geturls_details) && count($results->result_geturls_details) > 1) {
                 $results = $results->result_geturls_details;
             }
 
