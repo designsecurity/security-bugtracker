@@ -51,13 +51,13 @@ class OpenvasApi
             $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
             $cmd .= " --xml='<create_target><name>webissue$issueId</name>";
             $cmd .= "<hosts>".$req["target"]."</hosts><port_list id=\"$portlistid\"></port_list><alive_tests>Consider Alive</alive_tests></create_target>'";
-            $output = shell_exec($cmd." 2>&1");
+            $output = shell_exec($cmd);
             
             preg_match('|<create_target_response .* id=\"([^"]*)\"|', $output, $matches);
             if (isset($matches[1])) {
                 $targetid = $matches[1];
             } else {
-                OpenvasApi::logp("error '$cmd' '$output' '$matches'");
+                OpenvasApi::logp("error '$cmd'");
             }
 
             if (!empty($targetid)) {
