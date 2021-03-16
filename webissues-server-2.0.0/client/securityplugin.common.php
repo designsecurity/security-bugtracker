@@ -177,6 +177,7 @@ class SecurityPluginCommon
             
             $run_openvas->id_scan = $issueId;
             $run_openvas->id_config = $req["id_config_openvas"];
+            $run_openvas->id_scanner = $req["id_scanner_openvas"];
 
             ini_set('default_socket_timeout', 600);
             ini_set('soap.wsdl_cache_enabled', 0);

@@ -26,10 +26,7 @@ if ($fp1 == false || $fp2 == false || $fp3 == false) {
                         
                         $guessedHosts = [];
                         if (strpos($scope->scope, "*") !== false) {
-                            echo "HUM HUM I HAVE A STAR HERE1: '".$scope->scope."'\n";
-                          
                             $substar = substr($scope->scope, strpos($scope->scope, "*") + 2);
-                            echo "HUM HUM I HAVE A STAR HERE2: '$substar'\n";
                           
                             $cmd = $CONF_SUBLIST3R_BIN." -d $substar -o tmp/output.txt";
                             $output = shell_exec($cmd);

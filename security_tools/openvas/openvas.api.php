@@ -36,15 +36,21 @@ class OpenvasApi
             if (isset($req["id_config"]) && !empty($req["id_config"])) {
                 $configId = $req["id_config"];
             }
+            
+            $scannerId = $GLOBALS['CONF_OPENVAS_SCANNER_ID'];
+            if (isset($req["id_scanner"]) && !empty($req["id_scanner"])) {
+                $scannerId = $req["id_scanner"];
+            }
 
             $openvasomp = $GLOBALS['CONF_OPENVAS_PATH_OMP'];
             $openvaslogin = $GLOBALS['CONF_OPENVAS_ADMIN_LOGIN'];
             $openvaspwd = $GLOBALS['CONF_OPENVAS_ADMIN_PASSWORD'];
+            $portlistid = $GLOBALS['CONF_OPENVAS_PORTLIST_ID'];
             
             $cmd = "sudo -u gvm $openvasomp --gmp-username $openvaslogin --gmp-password $openvaspwd";
             $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
             $cmd .= " --xml='<create_target><name>webissue$issueId</name>";
-            $cmd .= "<hosts>".$req["target"]."</hosts><alive_tests>Consider Alive</alive_tests></create_target>'";
+            $cmd .= "<hosts>".$req["target"]."</hosts><port_list id=\"$portlistid\"></port_list><alive_tests>Consider Alive</alive_tests></create_target>'";
             $output = shell_exec($cmd);
             
             preg_match('|<create_target_response .* id=\"([^"]*)\"|', $output, $matches);
@@ -76,7 +82,7 @@ class OpenvasApi
                 $cmd .= " socket --socketpath /opt/gvm/var/run/gvmd.sock";
                 $cmd .= " --xml='<create_task><name>webissue$issueId</name><comment>test</comment>";
                 $cmd .= "<config id=\"$configId\"/><target id=\"$targetid\"/><alert id=\"$alertid\"/>";
-                $cmd .= "<scanner id=\"".$GLOBALS['CONF_OPENVAS_SCANNER_ID']."\"/></create_task>'";
+                $cmd .= "<scanner id=\"$scannerId\"/></create_task>'";
                 
                 $output = shell_exec($cmd);
                 preg_match('|<create_task_response .* id=\"([^"]*)\"|', $output, $matches);

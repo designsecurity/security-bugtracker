@@ -35,7 +35,7 @@
 	</wsdl:binding>
 	<wsdl:service name="ws_securitybugtracker">
 		<wsdl:port name="ws_securitybugtrackerPort" binding="tns:ws_securitybugtracker_Binding">
-			<soapbind:address location="http://localhost/webissues-server-2.0.0/client/security_tools/openvas/openvas.php"/>
+			<soapbind:address location="http://securitytools/openvas/openvas.php"/>
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

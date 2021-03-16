@@ -37,9 +37,9 @@ class Client_SecurityPlugin extends System_Web_Component
 
         if ($this->install_security == "yes") {
             $this->form = new System_Web_Form('installation', $this);
-            $this->form->addField('openvas_ws_login', "test");
-            $this->form->addField('openvas_ws_password', "test");
-            $this->form->addField('openvas_ws_endpoint', "");
+            $this->form->addField('openvas_ws_login', getenv("GVM_WS_USERNAME"));
+            $this->form->addField('openvas_ws_password', getenv("GVM_WS_PASSWORD"));
+            $this->form->addField('openvas_ws_endpoint', "http://".getenv("SECURITYTOOLS_HOST")."/openvas.php");
 
             if ($this->form->loadForm()) {
                 if ($this->form->isSubmittedWith('ok') && !$this->form->hasErrors()) {

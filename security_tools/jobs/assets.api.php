@@ -105,7 +105,7 @@ function add_assets_servers()
     }
 }
 
-function add_projects_with_assets($type = "servers")
+function add_projects_with_assets($type = "ips")
 {
     $addurl = new TypeAddurl();
     $addserver = new TypeAddserver();

@@ -1,7 +1,7 @@
 # Security-bugtracker
 > A tool to run security tools and track security bugs easily
 
----
+Security-bugtracker is just a plugin of the awesome [webissues](https://github.com/mimecorg/webissues) bugtracker.  
 
 ## Supported tools
 - [OpenVAS](https://www.openvas.org/)
@@ -11,61 +11,48 @@
 - [Sslscan](https://github.com/rbsec/sslscan)
 - [Owasp ZAP](https://www.zaproxy.org/)
 
-## Prerequisites
+## Installation
+Git clone this repository and change, at the top of `docker-compose.yml` file, the default credential to secure values.
 
-Clone security-bugtracker into a temporary directory of your choice (`tmp-security-bugtracker` below):
-
-```shell
-git clone https://github.com/designsecurity/security-bugtracker tmp-security-bugtracker
+At the root of the repo, use `docker-compose` to build the docker images and run the containers:
+```
+docker-compose build
+docker-compose up
 ```
 
-### Webissues installation
-Security-bugtracker is just a plugin of the awesome [webissues](https://github.com/mimecorg/webissues) bugtracker.  
-Clone webissues repository into a web server directory of your choice (`/srv/www/htdocs/webissues` below):
+Go to http://localhost:1080/setup/install.php and complete the installation of webissues (you just have to create an administrator account on the last screen of the setup) then go to http://localhost:1080/client/securityplugin.php and install the "webissues security plugin".
 
-```shell
-git clone https://github.com/mimecorg/webissues /srv/www/htdocs/webissues
-cd /srv/www/htdocs/webissues
-npm install
-npm run build:web
-```
-
-Go to http://localhost/webissues/setup/install.php to configure webissues.
-
-### OpenVAS plugin installation
-
-[OpenVAS](https://www.openvas.org/) is the only mandatory security tool to install, security-bugtracker is deeply integrated with it, OpenVAS 9.0.1 or higher is necessary. Then, edit the OpenVAS-plugin configuration file [*tmp-security-bugtracker/security_tools/openvas/openvas.conf.php*](./security_tools/openvas/openvas.conf.php) with the required informations (look a the comments in this file for more help).  
+Login to webissues as administrator and create a normal account with username and password equals to `OPENVAS_WEBISSUES_USERNAME` and `OPENVAS_WEBISSUES_PASSWORD` defined in the `docker-compose.yml` file.
 
 ## Configuration
-
-*Merge* webissues and security-bugtracker with the chosen directory (step 1 of the [prerequisites](#prerequisites)) as argument of the install.sh utility:
-```shell
-cd tmp-security-bugtracker
-./install.sh security-plugin /srv/www/htdocs/webissues/
+The first time, after the installation, run:
+```
+docker exec --user gvm -it security-bugtracker_securitytools_1 /opt/gvm/update_openvas.sh
+docker exec --user gvm -it security-bugtracker_securitytools_1 /opt/gvm/create_config_gvm.sh
 ```
 
-Go to http://localhost/webissues/client/securityplugin.php to finalize the configuration:
-- **openvas_ws_login**: is the login of the openvas webservice (the same than *$CONF_WS_OPENVAS_LOGIN* defined during the [OpenVAS plugin installation](#openvas-plugin-installation))
-- **openvas_ws_password**: is the password of the openvas webservice (the same than *$CONF_WS_OPENVAS_PASSWORD* defined during the [OpenVAS plugin installation](#openvas-plugin-installation))
-- **openvas_ws_endpoint**: is the url address of the openvas webservice (the same address than *$CONF_OPENVAS_ALERT_URL* defined during the [OpenVAS plugin installation](#openvas-plugin-installation))
-- **type_folder_bugs**: is the id of the "folder type bugs" used by OpenVAS, by default it's 2.
+Remember the scan config id printed on the console when running `/create_config_gvm.sh` script.
 
+Note: `update_openvas.sh` script updates openvas database, it can take more than one hour to end.
 
-*Copy* security-bugtracker OpenVAS plugin to the directory of your choice (can be on another server):
-```shell
-cd tmp-security-bugtracker
-./install.sh openvas-services /srv/www/htdocs/openvas-services/
+To update openvas database, from time to time, use only:
+```
+docker exec --user gvm -it security-bugtracker_securitytools_1 /opt/gvm/update_openvas.sh
 ```
 
 ## Run security scans
 
 ### With SOAP-UI
 
-Use your favorite SOAP client to request security bugtracker webservices:
+Use your favorite SOAP client to request (with administrator credentials / basic authentication) security bugtracker webservices:
+* the first request is to create a project named "test"
+* the second request is to add `OPENVAS_WEBISSUES_USERNAME` (retrieve its id in the webissues UI) as a member of this project.
+* the third request is to add a server to scan.
+* and the last request is to run the scan (pay attention to the `id_config_openvas` element which corresponds to the recommended scan config id created during the previous configuration).
 
 ![ScreenShot](./soapuidemo.png)
 
-When OpenVAS scan will end, corresponding issues will be automatically added to bugs folder of your newly project:
+When a OpenVAS scan ends, the corresponding issues will be automatically added to bugs folder of your project:
 
 ![ScreenShot](./resultbugsdemo.png)
 
