@@ -12,9 +12,9 @@ Security-bugtracker is just a plugin of the awesome [webissues](https://github.c
 - [Owasp ZAP](https://www.zaproxy.org/)
 
 ## Installation
-Change, at the top of `docker-compose.yml` file, the default credential to secure values.
+Git clone this repository and change, at the top of `docker-compose.yml` file, the default credential to secure values.
 
-Use `docker-compose` to build the docker images and run the containers:
+At the root of the repo, use `docker-compose` to build the docker images and run the containers:
 ```
 docker-compose build
 docker-compose up
