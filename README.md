@@ -46,13 +46,13 @@ docker exec --user gvm -it security-bugtracker_securitytools_1 /opt/gvm/update_o
 
 Use your favorite SOAP client to request (with administrator credentials / basic authentication) security bugtracker webservices:
 * the first request is to create a project named "test"
-* the second request is to add the openvas user account (`OPENVAS_WEBISSUES_USERNAME`) as a member of this project a project named "test".
+* the second request is to add `OPENVAS_WEBISSUES_USERNAME` (retrieve its id in the webissues UI) as a member of this project.
 * the third request is to add a server to scan.
-* and the last request is to run the scan (pay attention to the `id_config_openvas` element which correspond to the recommended scan config id created during the configuration.
+* and the last request is to run the scan (pay attention to the `id_config_openvas` element which corresponds to the recommended scan config id created during the previous configuration).
 
 ![ScreenShot](./soapuidemo.png)
 
-When OpenVAS scan will end, corresponding issues will be automatically added to bugs folder of your newly project:
+When a OpenVAS scan ends, the corresponding issues will be automatically added to bugs folder of your project:
 
 ![ScreenShot](./resultbugsdemo.png)
 
