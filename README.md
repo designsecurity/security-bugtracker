@@ -12,17 +12,17 @@ Security-bugtracker is just a plugin of the awesome [webissues](https://github.c
 - [Owasp ZAP](https://www.zaproxy.org/)
 
 ## Installation
-Change at the top of `docker-compose.yml` file the default credentials values with secure ones.
+Change, at the top of `docker-compose.yml` file, the default credential to secure values.
 
-Use docker-composer to build the images and run the containers:
+Use `docker-compose` to build the docker images and run the containers:
 ```
 docker-compose build
 docker-compose up
 ```
 
-Go to http://localhost:1080/setup/install.php and complete the installation of webissues (you just have to create an administrator account on the last screen of the setup) then go to http://localhost:1080/client/securityplugin.php and install the webissues' security plugin.
+Go to http://localhost:1080/setup/install.php and complete the installation of webissues (you just have to create an administrator account on the last screen of the setup) then go to http://localhost:1080/client/securityplugin.php and install the "webissues security plugin".
 
-Login to webissues as administrator and create a normal account with username and passwords equals to `OPENVAS_WEBISSUES_USERNAME` and `OPENVAS_WEBISSUES_PASSWORD` defined in the `docker-compose.yml` file.
+Login to webissues as administrator and create a normal account with username and password equals to `OPENVAS_WEBISSUES_USERNAME` and `OPENVAS_WEBISSUES_PASSWORD` defined in the `docker-compose.yml` file.
 
 ## Configuration
 The first time, after the installation, run:
@@ -30,11 +30,12 @@ The first time, after the installation, run:
 docker exec --user gvm -it security-bugtracker_securitytools_1 /opt/gvm/update_openvas.sh
 docker exec --user gvm -it security-bugtracker_securitytools_1 /opt/gvm/create_config_gvm.sh
 ```
-and remember the id of the scan config printed on the standard output when running the `/create_config_gvm.sh` script.
 
-Note: the first script update openvas will all the plugins, data, it can take more than one hour to end.
+Remember the scan config id printed on the console when running `/create_config_gvm.sh` script.
 
-To update openvas database, from time to time, use:
+Note: `update_openvas.sh` script updates openvas database, it can take more than one hour to end.
+
+To update openvas database, from time to time, use only:
 ```
 docker exec --user gvm -it security-bugtracker_securitytools_1 /opt/gvm/update_openvas.sh
 ```
@@ -43,7 +44,11 @@ docker exec --user gvm -it security-bugtracker_securitytools_1 /opt/gvm/update_o
 
 ### With SOAP-UI
 
-Use your favorite SOAP client to request security bugtracker webservices:
+Use your favorite SOAP client to request (with administrator credentials / basic authentication) security bugtracker webservices:
+* the first request is to create a project named "test"
+* the second request is to add the openvas user account (`OPENVAS_WEBISSUES_USERNAME`) as a member of this project a project named "test".
+* the third request is to add a server to scan.
+* and the last request is to run the scan (pay attention to the `id_config_openvas` element which correspond to the recommended scan config id created during the configuration.
 
 ![ScreenShot](./soapuidemo.png)
 
