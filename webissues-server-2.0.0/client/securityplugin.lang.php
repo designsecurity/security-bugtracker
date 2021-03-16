@@ -1,27 +1,27 @@
 <?php
 
-$FAULT_AUTHENTICATION = "Erreur d'authentification";
+$FAULT_AUTHENTICATION = "Authentication error";
 
-$IPS_FILTER_INVALID = "Format des adresses IPs invalide";
-$IPS_FILTER_INVALID2 = "Au moins une adresse IP doit être renseignée";
-$CODES_FILTER_INVALID = "Format des codes invalide";
-$NAME_FILTER_INVALID = "Nom invalide (entre 2 et 150 caractères maximum)";
-$ID_FILTER_INVALID = "Id invalide (doit être un integer)";
-$ACCESS_FILTER_INVALID = "Access invalide (member ou admin)";
-$USE_FILTER_INVALID = "Use invalide (Development ou Test ou Production)";
-$URL_FILTER_INVALID = "Url invalide";
+$IPS_FILTER_INVALID = "Invalid IP addresses format";
+$IPS_FILTER_INVALID2 = "At least one IP address is required";
+$CODES_FILTER_INVALID = "Invalid code format (should be a path)";
+$NAME_FILTER_INVALID = "Invalid name (between 2 and 150 chars)";
+$ID_FILTER_INVALID = "Invalid ID (should be an integer)";
+$ACCESS_FILTER_INVALID = "Not authorized (member or admin privileges required)";
+$USE_FILTER_INVALID = "Invalid use ('Development' or 'Test' or 'Production')";
+$URL_FILTER_INVALID = "Invalid url";
 
-$DUPLICATE_OBJECT = "Objet existant dans la base";
+$DUPLICATE_OBJECT = "Object already exists in the database";
 
-$UNKNOWN_CODE = "Code inconnu";
-$UNKNOWN_URL = "Url inconnue";
-$UNKNOWN_TOOL = "Outil inconnu";
-$UNKNOWN_SEVERITY = "Filter inconnu";
-$UNKNOWN_ALERT = "Alerte inconnue";
-$UNKNOWN_SERVER = "Serveur inconnu";
+$UNKNOWN_CODE = "Code unknown";
+$UNKNOWN_URL = "Url unknown";
+$UNKNOWN_TOOL = "Tool unknown";
+$UNKNOWN_SEVERITY = "Filter unknown (info, minor, medium, high)";
+$UNKNOWN_ALERT = "Alert unknown";
+$UNKNOWN_SERVER = "Server unknown";
 
-$ZERO_TARGETS = "Pas de targets pour lancer le scan";
-$ERROR_OPENVAS = "Erreur inconnue lors du lancement d'Openvas";
+$ZERO_TARGETS = "Targets are required to run a scan";
+$ERROR_OPENVAS = "Unknown error when running openvas";
 
 $PING_TARGET1 = "Existent target";
 $PING_TARGET2 = "is always vulnerable at the comment date after a new scan";

@@ -1,0 +1,72 @@
+version: "3.8"
+
+x-mysql-environment: &mysql-environment
+  MYSQL_ROOT_PASSWORD: 'root'
+  MYSQL_DATABASE: 'testdb'
+  MYSQL_USER: 'test'
+  MYSQL_PASSWORD: 'test'
+
+x-gvm-environment: &gvm-environment
+  GVM_ADMIN_USERNAME: 'admin'
+  GVM_ADMIN_PASSWORD: 'admin'
+  
+x-gvm-ws-environment: &gvm-ws-environment
+  GVM_WS_USERNAME: 'test'
+  GVM_WS_PASSWORD: 'test'
+  
+x-webissues-environment: &webissues-environment
+  OPENVAS_WEBISSUES_USERNAME: 'openvas'
+  OPENVAS_WEBISSUES_PASSWORD: 'openvas'
+  
+services:
+  securitytools:
+    build:
+      dockerfile: securitytools.Dockerfile
+      context: ./
+    ports:
+      - 4000:3001
+      - 1081:1080
+      - 10444:10443
+      - 9392:9392
+    environment:
+       <<: *gvm-environment
+       <<: *gvm-ws-environment
+       <<: *webissues-environment
+       SECURITYBUGTRACKER_HOST: 'securitybugtracker:1080'
+    volumes:
+      - postgres:/opt/gvm/postgres/ 
+      - openvasdata:/opt/gvm/var/lib/
+      - securitytoolswebsite:/srv/www/htdocs/
+  securitybugtracker:
+    build:
+      dockerfile: securitybugtracker.Dockerfile
+      context: ./
+    ports:
+      - 1080:1080
+      - 10443:10443
+    environment:
+       <<: *mysql-environment
+       <<: *gvm-ws-environment
+       MYSQL_HOST: 'mysql'
+       SECURITYTOOLS_HOST: 'securitytools:1080'
+    depends_on:
+      - securitytools
+      - mysql
+    volumes:
+      - securitybugtrackerwebsite:/srv/www/htdocs/
+  mysql:
+    image: mysql:latest
+    command: ["mysqld", "--default-authentication-plugin=mysql_native_password"]
+    restart: always
+    ports:
+      - 3307:3306
+    environment:
+       <<: *mysql-environment
+    volumes:
+      - mysql:/data/mysqldb     
+volumes:
+  mysql:
+  postgres:
+  openvasdata:
+  securitybugtrackerwebsite:
+  securitytoolswebsite:

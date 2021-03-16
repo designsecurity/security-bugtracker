@@ -248,9 +248,6 @@ class SecurityPluginApi extends System_Api_Base
                     throw new SoapFault("Server", $GLOBALS['ZERO_TARGETS']);
                 }
                 
-                var_dump($targetsweb);
-                var_dump($targetsservers);
-                var_dump($targets);
                 $issueId = SecurityPluginCommon::runOpenvas($req, $targets);
                 break;
             case "dependency-check":

@@ -1,7 +1,7 @@
 # Security-bugtracker
 > A tool to run security tools and track security bugs easily
 
----
+Security-bugtracker is just a plugin of the awesome [webissues](https://github.com/mimecorg/webissues) bugtracker.  
 
 ## Supported tools
 - [OpenVAS](https://www.openvas.org/)
@@ -11,50 +11,32 @@
 - [Sslscan](https://github.com/rbsec/sslscan)
 - [Owasp ZAP](https://www.zaproxy.org/)
 
-## Prerequisites
+## Installation
+Change at the top of `docker-compose.yml` file the default credentials values with secure ones.
 
-Clone security-bugtracker into a temporary directory of your choice (`tmp-security-bugtracker` below):
-
-```shell
-git clone https://github.com/designsecurity/security-bugtracker tmp-security-bugtracker
+Use docker-composer to build the images and run the containers:
+```
+docker-compose build
+docker-compose up
 ```
 
-### Webissues installation
-Security-bugtracker is just a plugin of the awesome [webissues](https://github.com/mimecorg/webissues) bugtracker.  
-Clone webissues repository into a web server directory of your choice (`/srv/www/htdocs/webissues` below):
+Go to http://localhost:1080/setup/install.php and complete the installation of webissues (you just have to create an administrator account on the last screen of the setup) then go to http://localhost:1080/client/securityplugin.php and install the webissues' security plugin.
 
-```shell
-git clone https://github.com/mimecorg/webissues /srv/www/htdocs/webissues
-cd /srv/www/htdocs/webissues
-npm install
-npm run build:web
-```
-
-Go to http://localhost/webissues/setup/install.php to configure webissues.
-
-### OpenVAS plugin installation
-
-[OpenVAS](https://www.openvas.org/) is the only mandatory security tool to install, security-bugtracker is deeply integrated with it, OpenVAS 9.0.1 or higher is necessary. Then, edit the OpenVAS-plugin configuration file [*tmp-security-bugtracker/security_tools/openvas/openvas.conf.php*](./security_tools/openvas/openvas.conf.php) with the required informations (look a the comments in this file for more help).  
+Login to webissues as administrator and create a normal account with username and passwords equals to `OPENVAS_WEBISSUES_USERNAME` and `OPENVAS_WEBISSUES_PASSWORD` defined in the `docker-compose.yml` file.
 
 ## Configuration
-
-*Merge* webissues and security-bugtracker with the chosen directory (step 1 of the [prerequisites](#prerequisites)) as argument of the install.sh utility:
-```shell
-cd tmp-security-bugtracker
-./install.sh security-plugin /srv/www/htdocs/webissues/
+The first time, after the installation, run:
 ```
+docker exec --user gvm -it security-bugtracker_securitytools_1 /opt/gvm/update_openvas.sh
+docker exec --user gvm -it security-bugtracker_securitytools_1 /opt/gvm/create_config_gvm.sh
+```
+and remember the id of the scan config printed on the standard output when running the `/create_config_gvm.sh` script.
 
-Go to http://localhost/webissues/client/securityplugin.php to finalize the configuration:
-- **openvas_ws_login**: is the login of the openvas webservice (the same than *$CONF_WS_OPENVAS_LOGIN* defined during the [OpenVAS plugin installation](#openvas-plugin-installation))
-- **openvas_ws_password**: is the password of the openvas webservice (the same than *$CONF_WS_OPENVAS_PASSWORD* defined during the [OpenVAS plugin installation](#openvas-plugin-installation))
-- **openvas_ws_endpoint**: is the url address of the openvas webservice (the same address than *$CONF_OPENVAS_ALERT_URL* defined during the [OpenVAS plugin installation](#openvas-plugin-installation))
-- **type_folder_bugs**: is the id of the "folder type bugs" used by OpenVAS, by default it's 2.
+Note: the first script update openvas will all the plugins, data, it can take more than one hour to end.
 
-
-*Copy* security-bugtracker OpenVAS plugin to the directory of your choice (can be on another server):
-```shell
-cd tmp-security-bugtracker
-./install.sh openvas-services /srv/www/htdocs/openvas-services/
+To update openvas database, from time to time, use:
+```
+docker exec --user gvm -it security-bugtracker_securitytools_1 /opt/gvm/update_openvas.sh
 ```
 
 ## Run security scans

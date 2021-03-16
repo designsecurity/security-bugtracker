@@ -30,9 +30,7 @@ echo $this->link("/client/securityplugin.php?install=no", $html);
     $form->renderFormOpen();
     $form->renderText($this->t('openvas_ws_login:'), 'openvas_ws_login', array( 'size' => 80 ));
     $form->renderText($this->t('openvas_ws_password:'), 'openvas_ws_password', array( 'size' => 80 ));
-    $endpoint = "http://localhost/webissues-server-2.0.0/client/security_tools/openvas/openvas.php";
-    $array = array( 'size' => 80, "value" => $endpoint );
-    $form->renderText($this->t('openvas_ws_endpoint:'), 'openvas_ws_endpoint', $array);
+    $form->renderText($this->t('openvas_ws_endpoint:'), 'openvas_ws_endpoint', array( 'size' => 80 ));
     $form->renderText($this->t('type_folder_bugs:'), 'type_folder_bugs', array( 'size' => 80, "value" => "2" ));
     ?>
 <div class="form-submit">

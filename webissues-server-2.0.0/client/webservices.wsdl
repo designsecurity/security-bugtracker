@@ -555,7 +555,7 @@ schemaLocation="webservices.xsd"/>
 	<wsdl:service name="ws_securitybugtracker">
 		<wsdl:port name="ws_securitybugtrackerPort" binding="tns:ws_securitybugtracker_Binding">
 			<soapbind:address 
-location="http://localhost:81/webissues-server-2.0.0/client/webservices.php"/>
+location="http://localhost:1080/client/webservices.php"/>
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

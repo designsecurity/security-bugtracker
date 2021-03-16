@@ -18,7 +18,7 @@ if (isset($_GET["alertscanid"])) {
     $alertscanid = (int) $_GET["alertscanid"];
 }
 
-// http://localhost:81/webissues-server-2.0.0/client/security_tools/openvas/openvas.php?alertscanid=10512
+// http://localhost:1080/openvas.php?alertscanid=10512
 
 if (!empty($alertscanid)) {
     $getparamsfromalertid = new TypeGetparamsfromalertid();
@@ -36,7 +36,7 @@ if (!empty($alertscanid)) {
     try {
         ini_set('default_socket_timeout', 10000);
         ini_set('soap.wsdl_cache_enabled', 0);
-        $clientsoap = new SoapClient($GLOBALS['CONF_WEBISSUES_WS_ENDPOINT']."?wsdl", $credentials);
+        $clientsoap = new SoapClient("webservices.wsdl", $credentials);
         $clientsoap->__setLocation($GLOBALS['CONF_WEBISSUES_WS_ENDPOINT']);
         $param = new SoapParam($getparamsfromalertid, 'tns:getparamsfromalertid');
         $result = $clientsoap->__call('getparamsfromalertid', array('getparamsfromalertid'=>$param));
